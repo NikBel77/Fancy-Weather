@@ -1,5 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const config = {
     entry: './src/index.js',
@@ -7,12 +8,6 @@ const config = {
         path: path.resolve(__dirname, 'dist'),
         filename: 'main.js'
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            filename: 'main.html',
-            title: 'Fancy Weather'
-        })
-    ],
 }
 
 const dev = {
@@ -28,7 +23,13 @@ const dev = {
                 ]
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'main.html',
+            title: 'Fancy Weather'
+        })
+    ],
 }
 
 const prod = {
@@ -39,6 +40,7 @@ const prod = {
                 test: /\.scss$/,
                 use: [
                     'style-loader',
+                    MiniCssExtractPlugin.loader,
                     'css-loader',
                     'sass-loader'
                 ]
@@ -54,7 +56,16 @@ const prod = {
                 }
             }
         ]
-    }
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'main.html',
+            title: 'Fancy Weather'
+        }),
+        new MiniCssExtractPlugin({
+            filename: 'main.css'
+        })
+    ],
 }
 
 const lint = {
@@ -71,14 +82,7 @@ const lint = {
 
 module.exports = function(env) {
 
-    if(env === 'development') {
-        return Object.assign(
-            {},
-            config,
-            dev
-        )
-    }
-    else if(env === 'production') {
+    if(env === 'production') {
         return Object.assign(
             {},
             config,
@@ -90,6 +94,13 @@ module.exports = function(env) {
             {},
             config,
             lint
+        )
+    }
+    else {
+        return Object.assign(
+            {},
+            config,
+            dev
         )
     }
 }
