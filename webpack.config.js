@@ -8,7 +8,7 @@ const config = {
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'main.js'
-    },
+    }
 }
 
 const dev = {
@@ -90,16 +90,16 @@ const lint = {
     ],
 }
 
-module.exports = function(env) {
+module.exports = function (env) {
 
-    if(env === 'production') {
+    if (env === 'production') {
         return Object.assign(
             {},
             config,
             prod
         )
     }
-    else if(env === 'lint') {
+    else if (env === 'lint') {
         return Object.assign(
             {},
             config,

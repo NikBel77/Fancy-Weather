@@ -1,4 +1,4 @@
-root = true
+root = true 
 
-[*.js]
-indent_style = tab
+[*.js] 
+indent_style = tab 
