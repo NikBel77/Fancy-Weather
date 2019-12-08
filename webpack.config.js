@@ -1,6 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 const config = {
     entry: './src/index.js',
@@ -25,6 +26,7 @@ const dev = {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'main.html',
             title: 'Fancy Weather'
@@ -58,6 +60,7 @@ const prod = {
         ]
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'main.html',
             title: 'Fancy Weather'
@@ -77,7 +80,14 @@ const lint = {
                 loader: 'eslint-loader'
             }
         ]
-    }
+    },
+    plugins: [
+        new CleanWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            filename: 'main.html',
+            title: 'Fancy Weather'
+        })
+    ],
 }
 
 module.exports = function(env) {
