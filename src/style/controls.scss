@@ -1,0 +1,49 @@
+.controls {
+    grid-area: contr;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &__panel {
+        padding: 0 2rem;
+
+        & button {
+            margin-right: 1rem;
+            border-radius: .6rem
+        }
+    }
+
+    &__search {
+        padding: 0 2rem;
+
+        display: flex;
+        align-items: center;
+    }
+
+    &__inp {
+        border-top-left-radius: .6rem;
+        border-bottom-left-radius: .6rem;
+
+        padding-left: 1rem;
+    }
+
+    &__btn-search {
+        border-top-right-radius: .6rem;
+        border-bottom-right-radius: .6rem;
+    }
+
+    & button {
+        outline: none;
+        width: 3rem;
+        height: 3rem;
+        border: .1rem solid black;
+    }
+
+    & input {
+        outline: none;
+        height: 3rem;
+        width: 14rem;
+        border: .1rem solid black;
+    }
+}
