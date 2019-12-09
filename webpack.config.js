@@ -7,7 +7,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const config = {
     entry: './src/index.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
+        path: path.join(__dirname, 'dist'),
         filename: 'main.js',
     },
     plugins: [
@@ -45,9 +45,10 @@ const dev = {
     },
     devServer: {
         overlay: true,
-        contentBase: path.resolve(__dirname, './dist'),
         publicPath: 'http://localhost:9000/dist/',
-        port: 9000
+        port: 9000,
+        inline: true,
+        hot: true
     },
 }
 

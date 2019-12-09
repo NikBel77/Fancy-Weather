@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --env development --open --hot",
+    "start": "webpack-dev-server --env development --open",
     "watch": "webpack --watch",
     "dev": "webpack --env development",
     "bild": "webpack --env production",
@@ -55,6 +55,5 @@
         4
       ]
     }
-  },
-  "dependencies": {}
+  }
 }
