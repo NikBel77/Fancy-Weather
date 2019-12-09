@@ -1,4 +1,5 @@
 const path = require('path')
+const merge = require('webpack-merge')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
@@ -7,8 +8,14 @@ const config = {
     entry: './src/index.js',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'main.js'
-    }
+        filename: 'main.js',
+    },
+    plugins: [
+        new HtmlWebpackPlugin({
+            filename: 'index.html',
+            title: 'Fancy Weather'
+        })
+    ],
 }
 
 const dev = {
@@ -25,13 +32,12 @@ const dev = {
             }
         ]
     },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            filename: 'main.html',
-            title: 'Fancy Weather'
-        })
-    ],
+    devServer: {
+        overlay: true,
+        contentBase: path.resolve(__dirname, './dist'),
+        publicPath: 'http://localhost:9000/dist/',
+        port: 9000
+    },
 }
 
 const prod = {
@@ -76,41 +82,30 @@ const lint = {
     module: {
         rules: [
             {
+                test: /\.scss$/,
+                use: [
+                    'style-loader',
+                    'css-loader',
+                    'sass-loader'
+                ]
+            },
+            {
                 test: /\.js$/,
                 loader: 'eslint-loader'
             }
         ]
     },
-    plugins: [
-        new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            filename: 'main.html',
-            title: 'Fancy Weather'
-        })
-    ],
 }
 
-module.exports = function (env) {
+module.exports = function(env) {
 
     if (env === 'production') {
-        return Object.assign(
-            {},
-            config,
-            prod
-        )
+        return merge(config, prod)
     }
     else if (env === 'lint') {
-        return Object.assign(
-            {},
-            config,
-            lint
-        )
+        return merge(config, lint)
     }
     else {
-        return Object.assign(
-            {},
-            config,
-            dev
-        )
+        return merge(config, dev)
     }
 }
