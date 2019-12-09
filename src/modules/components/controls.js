@@ -2,10 +2,12 @@ import Component from "./component";
 
 export default class Controls extends Component {
 
-    constructor() {
+    constructor(wrapperClassName) {
         
-        super();
-        this.createWrapper('controls');
+        super(wrapperClassName);
+
+        this.targetClass = 'controls'
+        this.createWrapper(this.targetClass);
 
     }
 

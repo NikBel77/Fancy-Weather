@@ -2,10 +2,12 @@ import Component from "./component";
 
 export default class Forecast extends Component{
 
-    constructor() {
+    constructor(wrapperClassName) {
 
-        super();
-        this.createWrapper('forecast');
+        super(wrapperClassName);
+
+        this.targetClass = 'forecast'
+        this.createWrapper(this.targetClass);
 
     }
 }

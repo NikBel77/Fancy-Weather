@@ -2,10 +2,12 @@ import Component from "./component";
 
 export default class Weather extends Component{
 
-    constructor() {
+    constructor(wrapperClassName) {
 
-        super();
-        this.createWrapper('weather');
+        super(wrapperClassName);
+
+        this.targetClass = 'weather'
+        this.createWrapper(this.targetClass);
 
     }
 }

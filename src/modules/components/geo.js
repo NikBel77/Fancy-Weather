@@ -2,10 +2,12 @@ import Component from "./component";
 
 export default class Geo extends Component{
 
-    constructor() {
+    constructor(wrapperClassName) {
 
-        super();
-        this.createWrapper('geo');
+        super(wrapperClassName);
+
+        this.targetClass = 'geo'
+        this.createWrapper(this.targetClass);
 
     }
 }

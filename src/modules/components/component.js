@@ -1,10 +1,16 @@
 export default class Component {
 
+    constructor(wrapperClassName) {
+
+        this.wrapperClassName = wrapperClassName;
+
+    }
+
     createWrapper(className) {
         
         const wrapper = document.createElement('div');
         wrapper.classList.add(className);
-        document.querySelector('.app__inner').appendChild(wrapper);
+        document.querySelector('.' + this.wrapperClassName).appendChild(wrapper);
 
     }
 }
