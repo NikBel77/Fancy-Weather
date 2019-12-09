@@ -16,6 +16,17 @@ const config = {
             title: 'Fancy Weather'
         })
     ],
+    module: {
+        rules: [
+            {
+                test: /\.(png|jpg|gif|svg)$/,
+                loader: 'file-loader',
+                options: {
+                    name: 'assets/[name].[ext]'
+                }
+            }
+        ]
+    }
 }
 
 const dev = {
@@ -68,7 +79,7 @@ const prod = {
     plugins: [
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            filename: 'main.html',
+            filename: 'index.html',
             title: 'Fancy Weather'
         }),
         new MiniCssExtractPlugin({
