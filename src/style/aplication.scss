@@ -23,18 +23,3 @@
         "fore fore fore geo geo";
     }
 }
-
-.forecast {
-    grid-area: fore;
-    border: 1px solid black;
-}
-
-.geo {
-    grid-area: geo;
-    border: 1px solid black;
-}
-
-.weather {
-    grid-area: wea;
-    border: 1px solid black;
-}

@@ -8,5 +8,13 @@
     font-size: 10px;
 }
 
-@import 'aplication.scss';
-@import 'controls.scss';
+$main-color: #8bbabb;
+$secodary-color: #6c7b95;
+$dark-color: #464159;
+$wite-color: #c7f0db;
+
+@import './aplication.scss';
+@import './controls.scss';
+@import './geo.scss';
+@import './weather.scss';
+@import './forecast.scss';
