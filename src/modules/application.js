@@ -1,11 +1,10 @@
-
+import View from './view'
 
 export default class App {
+    
     constructor() {
 
-    }
-
-    init() {
+        this.view = new View;
 
     }
 }
