@@ -42,14 +42,7 @@ const dev = {
                 ]
             }
         ]
-    },
-    devServer: {
-        overlay: true,
-        publicPath: 'http://localhost:9000/dist/',
-        port: 9000,
-        inline: true,
-        hot: true
-    },
+    }
 }
 
 const prod = {
@@ -79,10 +72,6 @@ const prod = {
     },
     plugins: [
         new CleanWebpackPlugin(),
-        new HtmlWebpackPlugin({
-            filename: 'index.html',
-            title: 'Fancy Weather'
-        }),
         new MiniCssExtractPlugin({
             filename: 'main.css'
         })

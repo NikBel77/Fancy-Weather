@@ -5,8 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --env development --open",
-    "watch": "webpack --watch",
+    "watch": "webpack --watch --env development",
     "dev": "webpack --env development",
     "bild": "webpack --env production",
     "lint": "webpack --env lint"
@@ -32,7 +31,6 @@
     "style-loader": "^1.0.1",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
-    "webpack-dev-server": "^3.9.0",
     "webpack-merge": "^4.2.2"
   },
   "eslintConfig": {
