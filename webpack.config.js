@@ -11,6 +11,7 @@ const config = {
         filename: 'main.js',
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             filename: 'index.html',
             title: 'Fancy Weather'
@@ -71,7 +72,6 @@ const prod = {
         ]
     },
     plugins: [
-        new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
             filename: 'main.css'
         })
