@@ -11,25 +11,25 @@ export default class Controls extends Component {
 
         this.elements = {
 
-            panel: { tag: 'div', class: 'controls__panel' },
-            search: { tag: 'div', class: 'controls__search' }
+            panel: { tag: 'div', class: 'controls__panel', link: null },
+            search: { tag: 'div', class: 'controls__search', link: null }
 
         };
         this.createElements(this.elements, this.wrapper);
 
         this.panelElements = {
 
-            buttonImg: { tag: 'button', class: 'controls__btn-img' },
-            buttonLang: { tag: 'button', class: 'controls__btn-lang' },
-            buttonDeg: { tag: 'button', class: 'controls__btn-deg' }
+            buttonImg: { tag: 'button', class: 'controls__btn-img', link: null },
+            buttonLang: { tag: 'button', class: 'controls__btn-lang', link: null },
+            buttonDeg: { tag: 'button', class: 'controls__btn-deg', link: null }
 
         };
         this.createElements(this.panelElements, this.elements.panel.link);
 
         this.searchElements = {
 
-            searchInput: { tag: 'input', class: 'controls__inp' },
-            searchBtn: { tag: 'button', class: 'controls__btn-search' }
+            searchInput: { tag: 'input', class: 'controls__inp', link: null },
+            searchBtn: { tag: 'button', class: 'controls__btn-search', link: null }
 
         }
         this.createElements(this.searchElements, this.elements.search.link);

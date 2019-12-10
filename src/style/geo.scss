@@ -1,7 +1,13 @@
 .geo {
     grid-area: geo;
+    padding: 0 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+
+    &__map {
+        align-self: stretch;
+        flex-basis: 24rem;
+    }
 }

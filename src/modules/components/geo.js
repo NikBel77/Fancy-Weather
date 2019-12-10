@@ -11,12 +11,13 @@ export default class Geo extends Component{
 
         this.elements = {
 
-            map: { tag: 'img', class: 'map' },
-            latitude: { tag: 'p', class: 'lat' },
-            longitude: { tag: 'p', class: 'long' }
+            map: { tag: 'div', class: 'geo__map', link: null },
+            latitude: { tag: 'p', class: 'geo__lat', link: null },
+            longitude: { tag: 'p', class: 'geo__lon', link: null }
 
         }
         this.createElements(this.elements, this.wrapper);
 
+        this.elements.map.link.id = 'map'
     }
 }

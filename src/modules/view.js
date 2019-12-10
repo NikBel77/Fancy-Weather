@@ -17,7 +17,6 @@ export default class View {
         this.forecast = new Forecast(this.appFragment);
         
         this.createAppWrapper();
-
     }
 
     createAppWrapper() {
