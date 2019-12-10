@@ -1,4 +1,18 @@
 .weather {
     grid-area: wea;
-    border: 1px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    
+    &__place-info {
+        align-self: stretch;
+    }
+
+    &__info {
+        align-self: stretch;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
 }

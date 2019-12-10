@@ -2,12 +2,12 @@ import Component from "./component";
 
 export default class Controls extends Component {
 
-    constructor(wrapperClassName) {
+    constructor(fragment) {
         
-        super(wrapperClassName);
+        super(fragment);
 
-        this.targetClass = 'controls'
-        this.createWrapper(this.targetClass);
+        this.targetClass = 'controls';
+        this.wrapper = this.createWrapper(this.targetClass);
 
         this.elements = {
 
@@ -15,7 +15,7 @@ export default class Controls extends Component {
             search: { tag: 'div', class: 'controls__search' }
 
         };
-        this.createElements(this.elements, this.targetClass);
+        this.createElements(this.elements, this.wrapper);
 
         this.panelElements = {
 
@@ -24,7 +24,7 @@ export default class Controls extends Component {
             buttonDeg: { tag: 'button', class: 'controls__btn-deg' }
 
         };
-        this.createElements(this.panelElements, this.elements.panel.class);
+        this.createElements(this.panelElements, this.elements.panel.link);
 
         this.searchElements = {
 
@@ -32,7 +32,7 @@ export default class Controls extends Component {
             searchBtn: { tag: 'button', class: 'controls__btn-search' }
 
         }
-        this.createElements(this.searchElements, this.elements.search.class);
+        this.createElements(this.searchElements, this.elements.search.link);
 
     }
 

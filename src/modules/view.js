@@ -9,12 +9,14 @@ export default class View {
 
         this.appClassName = 'app';
         this.innerClassName = 'app__inner';
-        this.createAppWrapper();
+        this.appFragment = document.createDocumentFragment();
 
-        this.controls = new Controls(this.innerClassName);
-        this.weather = new Weather(this.innerClassName);
-        this.geo = new Geo(this.innerClassName);
-        this.forecast = new Forecast(this.innerClassName);
+        this.controls = new Controls(this.appFragment);
+        this.weather = new Weather(this.appFragment);
+        this.geo = new Geo(this.appFragment);
+        this.forecast = new Forecast(this.appFragment);
+        
+        this.createAppWrapper();
 
     }
 
@@ -22,10 +24,12 @@ export default class View {
 
         const appWrapper = document.createElement('div');
         const appInner = document.createElement('div');
+        
         appWrapper.classList.add(this.appClassName);
         appInner.classList.add(this.innerClassName);
         document.body.appendChild(appWrapper);
         appWrapper.appendChild(appInner);
+        appInner.appendChild(this.appFragment);
 
     }
 }
