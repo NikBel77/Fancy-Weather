@@ -2,10 +2,15 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
 :root {
     font-size: 10px;
+}
+
+button, input {
+    font-size: 100%;
 }
 
 $main-color: #8bbabb;

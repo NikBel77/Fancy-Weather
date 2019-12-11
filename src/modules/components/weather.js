@@ -37,7 +37,8 @@ export default class Weather extends Component{
 
             iconImg: { tag: 'img', class: 'weather__icon', link: null },
             feelsLike: { tag: 'p', class: 'weather__feels', link: null },
-            wind: { tag: 'p', class: 'weather__wind', link: null }
+            wind: { tag: 'p', class: 'weather__wind', link: null },
+            humidity: { tag: 'p', class: 'weather__hum', link: null }
 
         }
         this.createElements(this.auxiliaryElements, this.weahterElements.auxiliaryInfo.link);

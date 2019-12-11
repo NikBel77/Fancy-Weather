@@ -2,6 +2,7 @@ import Controls from './components/controls'
 import Weather from './components/weather'
 import Geo from './components/geo'
 import Forecast from './components/forecast'
+import Langs from './langs'
 
 export default class View {
 
@@ -15,7 +16,9 @@ export default class View {
         this.weather = new Weather(this.appFragment);
         this.geo = new Geo(this.appFragment);
         this.forecast = new Forecast(this.appFragment);
+        this.langs = new Langs();
         
+        this.renderCurrentLang();
         this.createAppWrapper();
     }
 
@@ -29,6 +32,16 @@ export default class View {
         document.body.appendChild(appWrapper);
         appWrapper.appendChild(appInner);
         appInner.appendChild(this.appFragment);
+
+    }
+
+    renderCurrentLang() {
+
+        for (let key in this.langs.en) {
+
+            this[key].addTextToElements(this.langs.en[key]);
+
+        }
 
     }
 }

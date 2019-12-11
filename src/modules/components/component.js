@@ -27,4 +27,17 @@ export default class Component {
         }
 
     }
+
+    addTextToElements(currentLang) {
+
+        for (let elements in currentLang) {
+            for (let elem in currentLang[elements]) {
+
+                this[elements][elem].link.innerText = currentLang[elements][elem];
+
+            }
+        }
+
+    }
+
 }
