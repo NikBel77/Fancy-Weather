@@ -9,15 +9,38 @@ export default class Auxiliary extends Component {
         this.targetClass = 'auxiliary';
         this.wrapper = this.createWrapper(this.targetClass);
 
-        this.auxiliaryElements = {
+        this.auxElements = {
 
-            iconImg: { tag: 'img', class: 'weather__icon', link: null },
-            feelsLike: { tag: 'p', class: 'weather__feels', link: null },
-            wind: { tag: 'p', class: 'weather__wind', link: null },
-            humidity: { tag: 'p', class: 'weather__hum', link: null }
+            feelsLike: { tag: 'p', class: 'auxiliary__feels', link: null },
+            wind: { tag: 'p', class: 'auxiliary__wind', link: null },
+            humidity: { tag: 'p', class: 'auxiliary__hum', link: null }
 
         }
-        this.createElements(this.auxiliaryElements, this.wrapper);
+        this.appendElementsToFragment(this.auxElements, this.wrapper);
+
+        this.feelsInfo = {
+
+            text: { tag: 'span', link: null },
+            feelsVal: { tag: 'span', link: null }
+
+        }
+        this.appendElementsToFragment(this.feelsInfo, this.auxElements.feelsLike.link);
+
+        this.windInfo = {
+
+            text: { tag: 'span', link: null },
+            windVal: { tag: 'span', link: null }
+
+        }
+        this.appendElementsToFragment(this.windInfo, this.auxElements.wind.link);
+
+        this.humInfo = {
+
+            text: { tag: 'span', link: null },
+            humVal: { tag: 'span', link: null }
+
+        }
+        this.appendElementsToFragment(this.humInfo, this.auxElements.humidity.link);
 
     }
 

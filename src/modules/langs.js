@@ -13,10 +13,26 @@ export default class Langs {
                 searchElements: {
                     searchBtn: 'Search'
                 }
+            },
+            auxiliary: {
+                feelsInfo: {
+                    text: 'Feels like: '
+                },
+                windInfo: {
+                    text: 'Wind: '
+                },
+                humInfo: {
+                    text: 'Humidity: '
+                }
+            },
+            geo: {
+                latitudeInfo: {
+                    text: 'Latitude: '
+                },
+                longitudeInfo: {
+                    text: 'Longitude: '
+                }
             }
-
         }
-
     }
-
 }

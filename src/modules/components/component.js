@@ -15,14 +15,19 @@ export default class Component {
 
     }
 
-    createElements(objElements, parentElement) {
+    appendElementsToFragment(objElements, parentElement) {
 
         for (let key in objElements) {
 
             const element = document.createElement(objElements[key].tag);
-            element.classList.add(objElements[key].class);
+            
+            if ('class' in objElements[key]) {
+                element.classList.add(objElements[key].class);
+            }
+            if ('link' in objElements[key]) {
+                objElements[key].link = element;
+            }
             parentElement.appendChild(element);
-            objElements[key].link = element;
 
         }
 

@@ -15,7 +15,7 @@ export default class Controls extends Component {
             search: { tag: 'div', class: 'controls__search', link: null }
 
         };
-        this.createElements(this.controlElements, this.wrapper);
+        this.appendElementsToFragment(this.controlElements, this.wrapper);
 
         this.panelElements = {
 
@@ -24,7 +24,7 @@ export default class Controls extends Component {
             buttonDeg: { tag: 'button', class: 'controls__btn-deg', link: null }
 
         };
-        this.createElements(this.panelElements, this.controlElements.panel.link);
+        this.appendElementsToFragment(this.panelElements, this.controlElements.panel.link);
 
         this.searchElements = {
 
@@ -32,7 +32,7 @@ export default class Controls extends Component {
             searchBtn: { tag: 'button', class: 'controls__btn-search', link: null }
 
         }
-        this.createElements(this.searchElements, this.controlElements.search.link);
+        this.appendElementsToFragment(this.searchElements, this.controlElements.search.link);
 
     }
 

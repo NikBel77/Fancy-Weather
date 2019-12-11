@@ -14,7 +14,7 @@ export default class Weather extends Component{
             degree: { tag: 'span', class: 'weather__degree', link: null },
 
         }
-        this.createElements(this.weahterElements, this.wrapper);
+        this.appendElementsToFragment(this.weahterElements, this.wrapper);
 
     }
 }
