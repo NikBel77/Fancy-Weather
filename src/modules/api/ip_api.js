@@ -15,10 +15,11 @@ export default class IpAPI extends API {
 
     }
 
-    getPlaceByIp() {
+    async getPlaceByIp() {
 
         const url = this.ApiKeys.URL + this.ApiKeys.TOKEN;
-        this.getJsonData(url).then(res => console.log(res));
+        const ipInfo = await this.getJsonData(url);
+        return ipInfo
 
     }
 }

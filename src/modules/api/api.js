@@ -6,7 +6,8 @@ export default class API {
 
     async getJsonData(url) {
 
-        return await fetch(url).then(response => response.json());
+        const response = await fetch(url);
+        return await response.json();
 
     }
 }
