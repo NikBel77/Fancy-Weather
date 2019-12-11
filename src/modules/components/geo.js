@@ -9,15 +9,16 @@ export default class Geo extends Component{
         this.targetClass = 'geo';
         this.wrapper = this.createWrapper(this.targetClass);
 
-        this.elements = {
+        this.geoElements = {
 
             map: { tag: 'div', class: 'geo__map', link: null },
             latitude: { tag: 'p', class: 'geo__lat', link: null },
             longitude: { tag: 'p', class: 'geo__lon', link: null }
 
         }
-        this.createElements(this.elements, this.wrapper);
+        this.createElements(this.geoElements, this.wrapper);
 
-        this.elements.map.link.id = 'map'
+        this.geoElements.map.link.id = 'map';
+        
     }
 }

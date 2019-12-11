@@ -15,12 +15,13 @@
         background-color: rgba(0, 128, 0, 0.4);
 
         display: grid;
-        grid-template-rows: .5fr repeat(3, 1fr);
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-rows: .5fr repeat(4, 1fr);
+        grid-template-columns: repeat(7, 1fr);
         grid-template-areas: 
-        "contr contr contr contr contr"
-        "wea wea wea geo geo"
-        "wea wea wea geo geo"
-        "fore fore fore geo geo";
+        "cont cont cont cont cont cont cont"
+        "pla pla pla pla geo geo geo"
+        "wea wea aux aux geo geo geo"
+        "wea wea aux aux geo geo geo"
+        "fore fore fore fore geo geo geo";
     }
 }

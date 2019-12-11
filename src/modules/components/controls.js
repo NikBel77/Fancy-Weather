@@ -9,13 +9,13 @@ export default class Controls extends Component {
         this.targetClass = 'controls';
         this.wrapper = this.createWrapper(this.targetClass);
 
-        this.elements = {
+        this.controlElements = {
 
             panel: { tag: 'div', class: 'controls__panel', link: null },
             search: { tag: 'div', class: 'controls__search', link: null }
 
         };
-        this.createElements(this.elements, this.wrapper);
+        this.createElements(this.controlElements, this.wrapper);
 
         this.panelElements = {
 
@@ -24,7 +24,7 @@ export default class Controls extends Component {
             buttonDeg: { tag: 'button', class: 'controls__btn-deg', link: null }
 
         };
-        this.createElements(this.panelElements, this.elements.panel.link);
+        this.createElements(this.panelElements, this.controlElements.panel.link);
 
         this.searchElements = {
 
@@ -32,7 +32,7 @@ export default class Controls extends Component {
             searchBtn: { tag: 'button', class: 'controls__btn-search', link: null }
 
         }
-        this.createElements(this.searchElements, this.elements.search.link);
+        this.createElements(this.searchElements, this.controlElements.search.link);
 
     }
 

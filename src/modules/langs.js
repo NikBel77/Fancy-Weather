@@ -13,13 +13,6 @@ export default class Langs {
                 searchElements: {
                     searchBtn: 'Search'
                 }
-            },
-            weather: {
-                auxiliaryElements: {
-                    feelsLike: 'Feels like: ',
-                    wind: 'wind: ',
-                    humidity: 'Humidity: '
-                }
             }
 
         }
