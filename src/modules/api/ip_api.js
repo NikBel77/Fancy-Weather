@@ -1,4 +1,4 @@
-import API from "./api";
+import API from "./api"
 
 export default class IpAPI extends API {
 
@@ -15,11 +15,10 @@ export default class IpAPI extends API {
 
     }
 
-    async getPlaceByIp() {
+    getPlaceByIp() {
 
         const url = this.ApiKeys.URL + this.ApiKeys.TOKEN;
-        const ipInfo = await this.getJsonData(url);
-        return ipInfo
+        return this.getJsonData(url)
 
     }
 }

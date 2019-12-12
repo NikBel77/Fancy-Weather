@@ -1,4 +1,4 @@
-import Component from "./component";
+import Component from "./component"
 
 export default class Place extends Component {
 

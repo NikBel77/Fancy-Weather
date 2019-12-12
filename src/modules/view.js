@@ -4,7 +4,6 @@ import Geo from './components/geo'
 import Forecast from './components/forecast'
 import Auxiliary from './components/auxiliary'
 import Place from './components/place'
-import Langs from './langs'
 
 export default class View {
 
@@ -20,9 +19,7 @@ export default class View {
         this.forecast = new Forecast(this.appFragment);
         this.auxiliary = new Auxiliary(this.appFragment);
         this.place = new Place(this.appFragment);
-        this.langs = new Langs();
         
-        this.renderCurrentLang();
         this.createAppWrapper();
     }
 
@@ -39,11 +36,11 @@ export default class View {
 
     }
 
-    renderCurrentLang() {
+    renderData(data) {
+    
+        for (let key in data) {
 
-        for (let key in this.langs.en) {
-
-            this[key].addTextToElements(this.langs.en[key]);
+            this[key].addTextToElements(data[key]);
 
         }
 
