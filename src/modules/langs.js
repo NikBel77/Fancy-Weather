@@ -23,6 +23,9 @@ export default class Langs {
                 },
                 humInfo: {
                     text: 'Humidity: '
+                },
+                pressureInfo: {
+                    text: 'Pressure: '
                 }
             },
             geo: {

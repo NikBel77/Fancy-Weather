@@ -4,6 +4,7 @@ import IpAPI from './api/ip_api'
 import MapAPI from './api/map_api'
 import PhotoAPI from './api/photo_api'
 import Langs from './langs'
+import WeatherData from './weather_data'
 
 export default class App {
     
@@ -40,8 +41,13 @@ export default class App {
         this.coordinates.lat = pos.coords.latitude;
         this.coordinates.lon = pos.coords.longitude;
 
-        // const forcast = await this.weatherApi.getForecastByCoords(this.coordinates.lat, this.coordinates.lon);
+        const forecast = await this.weatherApi.getForecastByCoords(this.coordinates.lat, this.coordinates.lon);
         // const currentWeather = await this.weatherApi.getCurrentWeatherByCoords(this.coordinates.lat, this.coordinates.lon);
+        const currentWeather = await this.weatherApi.getCurrentWeatherByCity('dallas');
+
+        const data = new WeatherData(currentWeather, forecast)
+        this.view.renderData(data.data);
+        console.log(currentWeather, forecast, data)
 
     }
 
