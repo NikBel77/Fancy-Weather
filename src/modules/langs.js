@@ -2,6 +2,12 @@ export default class Langs {
 
     constructor() {
 
+        this.enDays = {
+
+            days: ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+            months: ['January','February','March','April','May','June','July','August','September','October','November','December']
+
+        }
         this.en = {
 
             controls: {
@@ -19,7 +25,8 @@ export default class Langs {
                     text: 'Feels like: '
                 },
                 windInfo: {
-                    text: 'Wind: '
+                    text: 'Wind: ',
+                    metric: 'm/s'
                 },
                 humInfo: {
                     text: 'Humidity: '

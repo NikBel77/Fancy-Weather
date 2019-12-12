@@ -3,6 +3,7 @@ import WeahterAPI from './api/weather_api'
 import IpAPI from './api/ip_api'
 import MapAPI from './api/map_api'
 import PhotoAPI from './api/photo_api'
+import GeoApi from './api/geo_api'
 import Langs from './langs'
 import WeatherData from './weather_data'
 
@@ -15,6 +16,7 @@ export default class App {
         this.ipApi = new IpAPI();
         this.mapApi = new MapAPI();
         this.photoApi = new PhotoAPI();
+        this.geoApi = new GeoApi();
         this.langs = new Langs();
         
         this.coordinates = {
@@ -32,7 +34,11 @@ export default class App {
 
     init() {
 
-        navigator.geolocation.getCurrentPosition(this.renderWeatherByPos,(error) => console.log(error));
+        navigator.geolocation.getCurrentPosition((pos) => {
+
+            this.renderWeatherByPos(pos)
+
+        },(error) => console.log(error));
 
     }
 
@@ -40,15 +46,18 @@ export default class App {
 
         this.coordinates.lat = pos.coords.latitude;
         this.coordinates.lon = pos.coords.longitude;
+        let { lat, lon } = this.coordinates;
 
-        const forecast = await this.weatherApi.getForecastByCoords(this.coordinates.lat, this.coordinates.lon);
-        // const currentWeather = await this.weatherApi.getCurrentWeatherByCoords(this.coordinates.lat, this.coordinates.lon);
-        const currentWeather = await this.weatherApi.getCurrentWeatherByCity('dallas');
+        const forecast = await this.weatherApi.getForecastByCoords(lat, lon);
+        const currentWeather = await this.weatherApi.getCurrentWeatherByCoords(lat, lon);
+        const geodata = await this.geoApi.getInfoByCoords(lat, lon);
 
-        const data = new WeatherData(currentWeather, forecast)
+        const data = new WeatherData(currentWeather, forecast, geodata, this.langs.enDays);
+
         this.view.renderData(data.data);
-        console.log(currentWeather, forecast, data)
+        this.view.forecast.renderForecast(data.forecastData);
 
+        console.log(currentWeather, forecast, geodata, this.langs.enDays)
     }
 
 }

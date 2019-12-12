@@ -6,7 +6,7 @@ export default class WeahterAPI extends API {
 
         super()
 
-        this.ApiKeys = {
+        this.apiKeys = {
 
             KEY: '&APPID=012243e39763091bf8494e5b88727bb0',
             URL: 'https://api.openweathermap.org/data/2.5/',
@@ -24,9 +24,9 @@ export default class WeahterAPI extends API {
 
     getForecastByCoords(lat, lon) {
 
-        const url = this.ApiKeys.URL + this.ApiKeys.FORECAST
-        + this.ApiKeys.LAT + lat + this.ApiKeys.LONG + lon
-        + this.ApiKeys.LANG + this.ApiKeys.UNITS  + this.ApiKeys.KEY;
+        const url = this.apiKeys.URL + this.apiKeys.FORECAST
+        + this.apiKeys.LAT + lat + this.apiKeys.LONG + lon
+        + this.apiKeys.LANG + this.apiKeys.UNITS  + this.apiKeys.KEY;
 
         return this.getJsonData(url); 
 
@@ -34,9 +34,9 @@ export default class WeahterAPI extends API {
 
     getCurrentWeatherByCoords(lat , lon) {
 
-        const url = this.ApiKeys.URL + this.ApiKeys.WEATHER
-        + this.ApiKeys.LAT + lat + this.ApiKeys.LONG + lon
-        + this.ApiKeys.LANG + this.ApiKeys.UNITS  + this.ApiKeys.KEY;
+        const url = this.apiKeys.URL + this.apiKeys.WEATHER
+        + this.apiKeys.LAT + lat + this.apiKeys.LONG + lon
+        + this.apiKeys.LANG + this.apiKeys.UNITS  + this.apiKeys.KEY;
 
         return this.getJsonData(url);
 
@@ -44,9 +44,9 @@ export default class WeahterAPI extends API {
 
     getCurrentWeatherByCity(city) {
 
-        const url = this.ApiKeys.URL + this.ApiKeys.WEATHER
+        const url = this.apiKeys.URL + this.apiKeys.WEATHER
         + 'q=' + city
-        + this.ApiKeys.LANG + this.ApiKeys.UNITS  + this.ApiKeys.KEY;
+        + this.apiKeys.LANG + this.apiKeys.UNITS  + this.apiKeys.KEY;
 
         return this.getJsonData(url);
 

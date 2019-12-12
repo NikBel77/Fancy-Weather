@@ -20,5 +20,34 @@ export default class Forecast extends Component{
         }
         this.appendElementsToFragment(this.forecastElements, this.wrapper);
 
+        this.forecastDays = [];
+
+        for (let day in this.forecastElements) {
+
+            let template = {
+
+                day: { tag: 'p', link: null },
+                desc: { tag: 'p', link: null },
+                temp: { tag: 'p', link: null },
+                icon: { tag: 'img', link: null }
+
+            }
+            this.appendElementsToFragment(template, this.forecastElements[day].link);
+            this.forecastDays.push(template);
+
+        }
+        
+    }
+
+    renderForecast(forecastData) {
+
+        for (let i = 0; i < forecastData.length; i += 1) {
+            for (let key in forecastData[i]) {
+
+                this.forecastDays[i][key].link.innerText = forecastData[i][key];
+
+            }
+        }
+
     }
 }

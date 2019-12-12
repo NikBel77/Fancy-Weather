@@ -11,6 +11,7 @@ export default class Auxiliary extends Component {
 
         this.auxElements = {
 
+            weatherDesc: { tag: 'p', link: null },
             feelsLike: { tag: 'p', class: 'auxiliary__info', link: null },
             wind: { tag: 'p', class: 'auxiliary__info', link: null },
             humidity: { tag: 'p', class: 'auxiliary__info', link: null },
@@ -38,7 +39,8 @@ export default class Auxiliary extends Component {
         this.windInfo = {
 
             text: { tag: 'span', link: null },
-            val: { tag: 'span', link: null }
+            val: { tag: 'span', link: null },
+            metric: { tag: 'span', link: null }
 
         }
         this.appendElementsToFragment(this.windInfo, this.auxElements.wind.link);

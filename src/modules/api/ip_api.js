@@ -6,7 +6,7 @@ export default class IpAPI extends API {
 
         super();
 
-        this.ApiKeys = {
+        this.apiKeys = {
 
             TOKEN: '?token=67c7ff516d3936',
             URL: 'https://ipinfo.io/json'
@@ -17,7 +17,7 @@ export default class IpAPI extends API {
 
     getPlaceByIp() {
 
-        const url = this.ApiKeys.URL + this.ApiKeys.TOKEN;
+        const url = this.apiKeys.URL + this.apiKeys.TOKEN;
         return this.getJsonData(url)
 
     }

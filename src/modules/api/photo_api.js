@@ -6,7 +6,7 @@ export default class PhotoAPI extends API {
 
         super();
 
-        this.ApiKeys = {
+        this.apiKeys = {
 
             KEY: '548fcb0d0208a9a1224f0765ea3b9352',
             SECRET_KEY: '58da77fa7ae16d11',
@@ -20,7 +20,7 @@ export default class PhotoAPI extends API {
 
     async getPhotoUrl(query) {
 
-        const url = this.ApiKeys.URL + this.ApiKeys.KEY + this.ApiKeys.TAGS + query + this.ApiKeys.PARAMS;
+        const url = this.apiKeys.URL + this.apiKeys.KEY + this.apiKeys.TAGS + query + this.apiKeys.PARAMS;
         const res = await this.getJsonData(url);
 
         let { server, farm, secret, id } = res.photos.photo[Math.floor(Math.random() * 10)];
