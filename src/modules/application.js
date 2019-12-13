@@ -50,6 +50,9 @@ export default class App {
         const forecastData = await this.weatherApi.getForecastByCoords(lat, lon);
         const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon);
         const geoData = await this.geoApi.getInfoByCoords(lat, lon);
+        const imageUrl = await this.photoApi.getPhotoUrl(weatherData.weather[0].description);
+
+        this.setAppBackground(imageUrl);
 
         const data = new WeatherData(weatherData, forecastData, geoData, this.langs.enDays);
         this.view.renderData(data.data);
@@ -62,6 +65,9 @@ export default class App {
         const forecastData = await this.weatherApi.getForecastByCity(query);
         const weatherData = await this.weatherApi.getCurrentWeatherByCity(query);
         const geoData = await this.geoApi.getInfoBySity(query);
+        const imageUrl = await this.photoApi.getPhotoUrl(weatherData.weather[0].description);
+
+        this.setAppBackground(imageUrl);
 
         const data = new WeatherData(weatherData, forecastData, geoData, this.langs.enDays);
         this.view.renderData(data.data);
@@ -74,10 +80,17 @@ export default class App {
         this.view.controls.searchElements.searchBtn.link.addEventListener('click', () => {
 
             let query = this.view.controls.searchElements.searchInput.link.value;
-            console.log(query)
             this.renderDataByCity(query);
 
-        })
+        });
+
+    }
+
+    setAppBackground(imageUrl) {
+
+        const app = document.querySelector(`.${this.view.appClassName}`);
+        app.style.background = `url(${imageUrl}) no-repeat center`;
+        app.style.backgroundSize = `cover`;
 
     }
 

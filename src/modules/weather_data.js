@@ -10,8 +10,6 @@ export default class WeatherData {
 
         date.setSeconds(date.getSeconds() + weather.timezone);
 
-        console.log(weather)
-
         this.data = {
 
             weather: {
