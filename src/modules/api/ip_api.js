@@ -8,8 +8,8 @@ export default class IpAPI extends API {
 
         this.apiKeys = {
 
-            TOKEN: '?token=67c7ff516d3936',
-            URL: 'https://ipinfo.io/json'
+            TOKEN: 'token=67c7ff516d3936',
+            URL: 'https://ipinfo.io/json?'
 
         }
 

@@ -18,38 +18,32 @@ export default class App {
         this.photoApi = new PhotoAPI();
         this.geoApi = new GeoApi();
         this.langs = new Langs();
-        
-        this.coordinates = {
-
-            lat: null,
-            lon: null
-
-        };
-
-        this.view.renderData(this.langs.en);
-        this.setEvents();
-        this.init();
 
     }
 
     init() {
 
+        this.view.renderData(this.langs.en);
+
         navigator.geolocation.getCurrentPosition((pos) => {
 
-            this.coordinates.lat = pos.coords.latitude;
-            this.coordinates.lon = pos.coords.longitude;
-            let { lat, lon } = this.coordinates;
-            this.renderDataByPos(lat, lon)
+            this.renderDataByPos(pos.coords.latitude, pos.coords.longitude)
 
-        },(error) => console.log(error));
+        }, () => {
+
+            this.renderByIp();
+
+        });
+
+        this.setEvents();
 
     }
 
     async renderDataByPos(lat, lon) {
 
+        const geoData = await this.geoApi.getInfoByCoords(lat, lon);
         const forecastData = await this.weatherApi.getForecastByCoords(lat, lon);
         const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon);
-        const geoData = await this.geoApi.getInfoByCoords(lat, lon);
         const imageUrl = await this.photoApi.getPhotoUrl(weatherData.weather[0].description);
 
         this.mapApi.getMap(lat, lon);
@@ -63,17 +57,27 @@ export default class App {
 
     async renderDataByCity(query) {
 
-        const forecastData = await this.weatherApi.getForecastByCity(query);
-        const weatherData = await this.weatherApi.getCurrentWeatherByCity(query);
         const geoData = await this.geoApi.getInfoBySity(query);
-        const imageUrl = await this.photoApi.getPhotoUrl(weatherData.weather[0].description);
-        this.mapApi.flyTo(weatherData.coord.lat, weatherData.coord.lon)
+        const [lat, lon] = [geoData.results[0].geometry.lat, geoData.results[0].geometry.lng];
 
+        const forecastData = await this.weatherApi.getForecastByCoords(lat, lon);
+        const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon);
+        const imageUrl = await this.photoApi.getPhotoUrl(weatherData.weather[0].description);
+
+        this.mapApi.flyTo(lat, lon)
         this.setAppBackground(imageUrl);
 
         const data = new WeatherData(weatherData, forecastData, geoData, this.langs.enDays);
         this.view.renderData(data.data);
         this.view.forecast.renderForecast(data.forecastData);
+
+    }
+
+    async renderByIp() {
+
+        const ipData = await this.ipApi.getPlaceByIp();
+        const coords = ipData.loc.split(',');
+        this.renderDataByPos(...coords);
 
     }
 

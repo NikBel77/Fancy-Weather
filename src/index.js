@@ -6,4 +6,6 @@ console.time('timer');
 
 const app = new App();
 
+app.init();
+
 console.timeEnd('timer');
