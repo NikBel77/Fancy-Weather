@@ -26,7 +26,6 @@ export default class App {
 
         };
 
-        this.renderWeatherByPos = this.renderWeatherByPos.bind(this);
         this.view.renderData(this.langs.en);
         this.init();
 
@@ -58,6 +57,12 @@ export default class App {
         this.view.forecast.renderForecast(data.forecastData);
 
         console.log(currentWeather, forecast, geodata, this.langs.enDays)
+
+        let i = document.createElement('i');
+        i.classList.add('owf');
+        i.classList.add('owf-800-d');
+        i.classList.add('owf-5x')
+
     }
 
 }

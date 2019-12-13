@@ -27,9 +27,9 @@ export default class Forecast extends Component{
             let template = {
 
                 day: { tag: 'p', link: null },
-                desc: { tag: 'p', link: null },
-                temp: { tag: 'p', link: null },
-                icon: { tag: 'img', link: null }
+                temp: { tag: 'span', link: null },
+                icon: { tag: 'i', class: 'owf', link: null },
+                desc: { tag: 'p', link: null }
 
             }
             this.appendElementsToFragment(template, this.forecastElements[day].link);
@@ -44,10 +44,16 @@ export default class Forecast extends Component{
         for (let i = 0; i < forecastData.length; i += 1) {
             for (let key in forecastData[i]) {
 
-                this.forecastDays[i][key].link.innerText = forecastData[i][key];
+                if (key === 'icon') {
 
+                    this.forecastDays[i][key].link.classList.add('owf-' + forecastData[i][key]);
+
+                } else {
+
+                    this.forecastDays[i][key].link.innerText = forecastData[i][key];
+
+                }
             }
         }
-
     }
 }

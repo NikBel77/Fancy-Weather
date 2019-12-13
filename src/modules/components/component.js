@@ -38,11 +38,16 @@ export default class Component {
         for (let elements in data) {
             for (let elem in data[elements]) {
                 
-                this[elements][elem].link.innerText = data[elements][elem];
+                if (elem === 'icon') {
 
+                    this[elements][elem].link.classList.add('owf-' + data[elements][elem]);
+
+                } else {
+
+                    this[elements][elem].link.innerText = data[elements][elem];
+
+                }
             }
         }
-
     }
-
 }

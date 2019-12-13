@@ -20,10 +20,17 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.(png|jpg|gif|svg)$/,
+                test: /\.(png|jpg|gif)$/,
                 loader: 'file-loader',
                 options: {
                     name: 'assets/[name].[ext]'
+                }
+            },
+            {
+                test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                loader: 'file-loader',
+                options: {
+                    name: 'fonts/[name].[ext]'
                 }
             }
         ]
@@ -34,6 +41,13 @@ const dev = {
     mode: 'development',
     module: {
         rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
             {
                 test: /\.scss$/,
                 use: [
@@ -50,6 +64,14 @@ const prod = {
     mode: 'production',
     module: {
         rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    MiniCssExtractPlugin.loader,
+                    'css-loader'
+                ]
+            },
             {
                 test: /\.scss$/,
                 use: [
@@ -82,6 +104,13 @@ const lint = {
     mode: 'development',
     module: {
         rules: [
+            {
+                test: /\.css$/,
+                use: [
+                    'style-loader',
+                    'css-loader'
+                ]
+            },
             {
                 test: /\.scss$/,
                 use: [

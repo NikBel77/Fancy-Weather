@@ -10,7 +10,8 @@ export default class WeatherData {
 
             weather: {
                 weahterElements: {
-                    degree: weather.main.temp
+                    degree: weather.main.temp,
+                    icon: weather.weather[0].id
                 }
             },
             auxiliary: {
@@ -70,11 +71,12 @@ export default class WeatherData {
 
         for (let i = 0; i < numberOfDays; i += 1) {
 
+            let current = i * (forecast.list.length / 5)
             let dayForecast = {
-
-                temp: forecast.list[i * numberOfDays].main.temp,
-                icon: forecast.list[i * numberOfDays].weather[0].icon,
-                desc: forecast.list[i * numberOfDays].weather[0].description,
+            
+                temp: forecast.list[current].main.temp,
+                icon: forecast.list[current].weather[0].id,
+                desc: forecast.list[current].weather[0].description,
                 day: this.getForecastDay(daysName, currentDate)
 
             }

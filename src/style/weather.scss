@@ -7,4 +7,14 @@
     &__degree {
         font-size: 3rem;
     }
+    &__far {
+        &::after {
+            content: '\2109'
+        }
+    }
+    &__cel {
+        &::after {
+            content: '\2103'
+        }
+    }
 }

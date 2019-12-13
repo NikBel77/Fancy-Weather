@@ -42,7 +42,7 @@ export default class Langs {
                 longitudeInfo: {
                     text: 'Longitude: '
                 }
-            }
+            },
         }
     }
 }
