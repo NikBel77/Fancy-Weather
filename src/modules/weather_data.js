@@ -5,13 +5,15 @@ export default class WeatherData {
         let date = new Date();
         date.setMinutes(date.getUTCMinutes() + date.getTimezoneOffset());
         date.setSeconds(date.getSeconds() + weather.timezone);
+    
+        let isSun = weather.sys.sunrise < Date.now() && weather.sys.sunset > Date.now();
 
         this.data = {
 
             weather: {
                 weahterElements: {
                     degree: weather.main.temp,
-                    icon: weather.weather[0].id
+                    icon: weather.weather[0].id + (isSun ? '-d' : '-n')
                 }
             },
             auxiliary: {
