@@ -19,9 +19,8 @@ export default class Place extends Component {
 
         this.geoInfo = {
 
-            countryName: { tag: 'span', link: null },
-            cityName: { tag: 'span', link: null },
-            countyName: { tag: 'span', link: null }
+            geoName: { tag: 'span', link: null },
+
 
         }
         this.appendElementsToFragment(this.geoInfo, this.placeElements.placeInfo.link)

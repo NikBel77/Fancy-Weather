@@ -44,15 +44,20 @@ export default class App {
         const geoData = await this.geoApi.getInfoByCoords(lat, lon);
         const forecastData = await this.weatherApi.getForecastByCoords(lat, lon);
         const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon);
-        const imageUrl = await this.photoApi.getPhotoUrl(weatherData.weather[0].description);
+
+        await this.setBackgroundPhoto(weatherData.weather[0].description);
 
         this.mapApi.getMap(lat, lon);
-        this.setAppBackground(imageUrl);
 
         const data = new WeatherData(weatherData, forecastData, geoData, this.langs.enDays);
         this.view.renderData(data.data);
         this.view.forecast.renderForecast(data.forecastData);
 
+        return new Promise((resolve, reject) => {
+
+            resolve(console.log('resolved'))
+
+        })
     }
 
     async renderDataByCity(query) {
@@ -62,15 +67,20 @@ export default class App {
 
         const forecastData = await this.weatherApi.getForecastByCoords(lat, lon);
         const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon);
-        const imageUrl = await this.photoApi.getPhotoUrl(weatherData.weather[0].description);
+
+        await this.setBackgroundPhoto(weatherData.weather[0].description);
 
         this.mapApi.flyTo(lat, lon)
-        this.setAppBackground(imageUrl);
 
         const data = new WeatherData(weatherData, forecastData, geoData, this.langs.enDays);
         this.view.renderData(data.data);
         this.view.forecast.renderForecast(data.forecastData);
 
+        return new Promise((resolve, reject) => {
+
+            resolve(console.log('resolved'))
+
+        })
     }
 
     async renderByIp() {
@@ -90,9 +100,21 @@ export default class App {
 
         });
 
+        this.view.controls.panelElements.buttonImg.link.addEventListener('click', () => {
+
+            this.setBackgroundPhoto();
+
+        });
+
     }
 
-    setAppBackground(imageUrl) {
+    async setBackgroundPhoto(query) {
+
+        if (!query) {
+            query = this.view.auxiliary.auxElements.weatherDesc.link.innerText;
+        }
+        console.log(query);
+        const imageUrl = await this.photoApi.getPhotoUrl(query);
 
         const app = document.querySelector(`.${this.view.appClassName}`);
         app.style.background = `url(${imageUrl}) no-repeat center`;

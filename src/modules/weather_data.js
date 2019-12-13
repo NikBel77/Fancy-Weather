@@ -10,8 +10,6 @@ export default class WeatherData {
 
         date.setSeconds(date.getSeconds() + weather.timezone);
 
-        let type = geo.results[0].components._type
-
         this.data = {
 
             weather: {
@@ -47,8 +45,7 @@ export default class WeatherData {
             },
             place: {
                 geoInfo: {
-                    countryName: geo.results[0].components.country + ', ',
-                    cityName: geo.results[0].components[type]
+                    geoName: geo.results[0].formatted,
                 },
                 placeElements: {
                     timeInfo: this.getFormatData(date, dateNames)
