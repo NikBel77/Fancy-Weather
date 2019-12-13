@@ -40,7 +40,7 @@ export default class Component {
                 
                 if (elem === 'icon') {
 
-                    this[elements][elem].link.classList.add('owf-' + data[elements][elem]);
+                    this[elements][elem].link.className = (`owf owf-${data[elements][elem]}`);
 
                 } else {
 

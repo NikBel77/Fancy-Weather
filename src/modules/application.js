@@ -27,6 +27,7 @@ export default class App {
         };
 
         this.view.renderData(this.langs.en);
+        this.setEvents();
         this.init();
 
     }
@@ -35,33 +36,48 @@ export default class App {
 
         navigator.geolocation.getCurrentPosition((pos) => {
 
-            this.renderWeatherByPos(pos)
+            this.coordinates.lat = pos.coords.latitude;
+            this.coordinates.lon = pos.coords.longitude;
+            let { lat, lon } = this.coordinates;
+            this.renderDataByPos(lat, lon)
 
         },(error) => console.log(error));
 
     }
 
-    async renderWeatherByPos(pos) {
+    async renderDataByPos(lat, lon) {
 
-        this.coordinates.lat = pos.coords.latitude;
-        this.coordinates.lon = pos.coords.longitude;
-        let { lat, lon } = this.coordinates;
+        const forecastData = await this.weatherApi.getForecastByCoords(lat, lon);
+        const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon);
+        const geoData = await this.geoApi.getInfoByCoords(lat, lon);
 
-        const forecast = await this.weatherApi.getForecastByCoords(lat, lon);
-        const currentWeather = await this.weatherApi.getCurrentWeatherByCoords(lat, lon);
-        const geodata = await this.geoApi.getInfoByCoords(lat, lon);
-
-        const data = new WeatherData(currentWeather, forecast, geodata, this.langs.enDays);
-
+        const data = new WeatherData(weatherData, forecastData, geoData, this.langs.enDays);
         this.view.renderData(data.data);
         this.view.forecast.renderForecast(data.forecastData);
 
-        console.log(currentWeather, forecast, geodata, this.langs.enDays)
+    }
 
-        let i = document.createElement('i');
-        i.classList.add('owf');
-        i.classList.add('owf-800-d');
-        i.classList.add('owf-5x')
+    async renderDataByCity(query) {
+
+        const forecastData = await this.weatherApi.getForecastByCity(query);
+        const weatherData = await this.weatherApi.getCurrentWeatherByCity(query);
+        const geoData = await this.geoApi.getInfoBySity(query);
+
+        const data = new WeatherData(weatherData, forecastData, geoData, this.langs.enDays);
+        this.view.renderData(data.data);
+        this.view.forecast.renderForecast(data.forecastData);
+
+    }
+
+    setEvents() {
+
+        this.view.controls.searchElements.searchBtn.link.addEventListener('click', () => {
+
+            let query = this.view.controls.searchElements.searchInput.link.value;
+            console.log(query)
+            this.renderDataByCity(query);
+
+        })
 
     }
 

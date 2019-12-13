@@ -51,4 +51,14 @@ export default class WeahterAPI extends API {
         return this.getJsonData(url);
 
     }
+
+    getForecastByCity(city) {
+
+        const url = this.apiKeys.URL + this.apiKeys.FORECAST
+        + 'q=' + city
+        + this.apiKeys.LANG + this.apiKeys.UNITS  + this.apiKeys.KEY;
+
+        return this.getJsonData(url);
+
+    }
 }

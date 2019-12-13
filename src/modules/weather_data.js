@@ -4,9 +4,13 @@ export default class WeatherData {
 
         let date = new Date();
         date.setMinutes(date.getUTCMinutes() + date.getTimezoneOffset());
-        date.setSeconds(date.getSeconds() + weather.timezone);
     
-        let isSun = weather.sys.sunrise < Date.now() && weather.sys.sunset > Date.now();
+        let isSun = weather.sys.sunrise < (date.getTime() / 1000) &&
+            weather.sys.sunset > (date.getTime() / 1000);
+
+        date.setSeconds(date.getSeconds() + weather.timezone);
+
+        console.log(weather)
 
         this.data = {
 
@@ -61,7 +65,7 @@ export default class WeatherData {
 
         const formatStrDate = dateNames.days[currentDate.getDay()] + ' '
         + dateNames.months[currentDate.getMonth()] + ' '
-        + currentDate.getDate()+ ' ' + currentDate.toLocaleTimeString();
+        + currentDate.getDate() + ' ' + currentDate.toLocaleTimeString();
         return formatStrDate
 
     }

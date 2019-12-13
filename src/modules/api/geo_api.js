@@ -22,4 +22,11 @@ export default class GeoApi extends API {
 
     }
 
+    getInfoBySity(query) {
+
+        const url = this.apiKeys.URL + query + this.apiKeys.KEY + '&pretty=1' + '&language=en';
+        return this.getJsonData(url)
+
+    }
+
 }
