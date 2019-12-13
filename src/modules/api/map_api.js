@@ -15,11 +15,9 @@ export default class MapAPI extends API {
 
         }
 
-        this.getMap();
-
     }
 
-    getMap() {
+    getMap(lat, lon) {
 
         const script = document.createElement('script');
         const link = document.createElement('link');
@@ -34,13 +32,26 @@ export default class MapAPI extends API {
 
             this.map = new mapboxgl.Map({
                 container: 'map',
-                style: 'mapbox://styles/mapbox/dark-v10'
+                style: 'mapbox://styles/mapbox/dark-v10',
+                center: [lon, lat],
+                zoom: 10
             });
 
         }
 
         document.head.appendChild(script);
         document.head.appendChild(link);
+
+    }
+
+    flyTo(lat, lon) {
+
+        this.map.flyTo({
+
+            center: [lon, lat],
+            zoom: 8
+
+        })
 
     }
 }

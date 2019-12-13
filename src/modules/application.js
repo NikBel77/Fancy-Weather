@@ -52,6 +52,7 @@ export default class App {
         const geoData = await this.geoApi.getInfoByCoords(lat, lon);
         const imageUrl = await this.photoApi.getPhotoUrl(weatherData.weather[0].description);
 
+        this.mapApi.getMap(lat, lon);
         this.setAppBackground(imageUrl);
 
         const data = new WeatherData(weatherData, forecastData, geoData, this.langs.enDays);
@@ -66,6 +67,7 @@ export default class App {
         const weatherData = await this.weatherApi.getCurrentWeatherByCity(query);
         const geoData = await this.geoApi.getInfoBySity(query);
         const imageUrl = await this.photoApi.getPhotoUrl(weatherData.weather[0].description);
+        this.mapApi.flyTo(weatherData.coord.lat, weatherData.coord.lon)
 
         this.setAppBackground(imageUrl);
 
