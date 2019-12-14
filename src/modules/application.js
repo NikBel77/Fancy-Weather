@@ -19,11 +19,14 @@ export default class App {
         this.geoApi = new GeoApi();
         this.langs = new Langs();
 
+        this.currentLang = 'en'
+        this.currentUnits = 'metric'
+
     }
 
     init() {
 
-        this.view.renderData(this.langs.en);
+        this.view.renderData(this.langs[this.currentLang]);
 
         navigator.geolocation.getCurrentPosition((pos) => {
 
@@ -41,44 +44,53 @@ export default class App {
 
     async renderDataByPos(lat, lon) {
 
-        const geoData = await this.geoApi.getInfoByCoords(lat, lon);
-        const forecastData = await this.weatherApi.getForecastByCoords(lat, lon);
-        const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon);
+        const geoData = await this.geoApi.getInfoByCoords(lat, lon, this.currentLang);
+        const forecastData = await this.weatherApi.getForecastByCoords(lat, lon, this.currentLang, this.currentUnits);
+        const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon, this.currentLang, this.currentUnits);
 
-        await this.setBackgroundPhoto(weatherData.weather[0].description);
+        try {
+            await this.setBackgroundPhoto(weatherData.weather[0].description);
+        } catch {
+            console.log('catch')
+        }
 
         this.mapApi.getMap(lat, lon);
 
-        const data = new WeatherData(weatherData, forecastData, geoData, this.langs.enDays);
+        const data = new WeatherData(weatherData, forecastData, geoData, this.langs[this.currentLang + 'Days']);
         this.view.renderData(data.data);
         this.view.forecast.renderForecast(data.forecastData);
 
         return new Promise((resolve, reject) => {
 
-            resolve(console.log('resolved'))
+            resolve(console.log(geoData, forecastData, weatherData))
 
         })
     }
 
     async renderDataByCity(query) {
 
-        const geoData = await this.geoApi.getInfoBySity(query);
+        const geoData = await this.geoApi.getInfoBySity(query, this.currentLang);
         const [lat, lon] = [geoData.results[0].geometry.lat, geoData.results[0].geometry.lng];
 
-        const forecastData = await this.weatherApi.getForecastByCoords(lat, lon);
-        const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon);
+        const forecastData = await this.weatherApi.getForecastByCoords(lat, lon, this.currentLang, this.currentUnits);
+        const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon, this.currentLang, this.currentUnits);
 
-        await this.setBackgroundPhoto(weatherData.weather[0].description);
-
+        try {
+            await this.setBackgroundPhoto(weatherData.weather[0].description);
+        } catch {
+            console.log('catch')
+        }
+        
+        
         this.mapApi.flyTo(lat, lon)
 
-        const data = new WeatherData(weatherData, forecastData, geoData, this.langs.enDays);
+        const data = new WeatherData(weatherData, forecastData, geoData, this.langs[this.currentLang + 'Days']);
         this.view.renderData(data.data);
         this.view.forecast.renderForecast(data.forecastData);
 
         return new Promise((resolve, reject) => {
 
-            resolve(console.log('resolved'))
+            resolve(console.log(geoData, forecastData, weatherData))
 
         })
     }

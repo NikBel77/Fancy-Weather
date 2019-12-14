@@ -71,11 +71,12 @@ export default class WeatherData {
         let numberOfDays = forecast.list.length / 8;
         let forecastData = [];
 
-        for (let i = 0; i < numberOfDays; i += 1) {
+        for (let i = 1; i <= numberOfDays; i += 1) {
 
-            let current = i * (forecast.list.length / 5)
+            let current = (i * (forecast.list.length / 5)) - 1;
+
             let dayForecast = {
-            
+
                 temp: forecast.list[current].main.temp,
                 icon: forecast.list[current].weather[0].id,
                 desc: forecast.list[current].weather[0].description,

@@ -15,16 +15,16 @@ export default class GeoApi extends API {
 
     }
 
-    getInfoByCoords(lat, lon) {
+    getInfoByCoords(lat, lon, lang) {
 
-        const url = this.apiKeys.URL + lat + '+' + lon + this.apiKeys.KEY + '&pretty=1' + '&language=en';
+        const url = this.apiKeys.URL + lat + '+' + lon + this.apiKeys.KEY + '&pretty=1' + `&language=${lang}`;
         return this.getJsonData(url)
 
     }
 
-    getInfoBySity(query) {
+    getInfoBySity(query, lang) {
 
-        const url = this.apiKeys.URL + query + this.apiKeys.KEY + '&pretty=1' + '&language=en';
+        const url = this.apiKeys.URL + query + this.apiKeys.KEY + '&pretty=1' + `&language=${lang}`;
         return this.getJsonData(url)
 
     }

@@ -14,29 +14,28 @@ export default class WeahterAPI extends API {
             WEATHER: 'weather?',
             LAT: 'lat=',
             LONG: '&lon=',
-            LANG: '&lang=en',
-            UNITS: '&units=metric',
-            iconReq: 'http://openweathermap.org/img/wn/10d@2x.png'
+            LANG: '&lang=',
+            UNITS: '&units=',
 
         }
         
     }
 
-    getForecastByCoords(lat, lon) {
+    getForecastByCoords(lat, lon, lang, units) {
 
         const url = this.apiKeys.URL + this.apiKeys.FORECAST
         + this.apiKeys.LAT + lat + this.apiKeys.LONG + lon
-        + this.apiKeys.LANG + this.apiKeys.UNITS  + this.apiKeys.KEY;
+        + this.apiKeys.LANG + lang + this.apiKeys.UNITS + units + this.apiKeys.KEY;
 
         return this.getJsonData(url); 
 
     }
 
-    getCurrentWeatherByCoords(lat , lon) {
+    getCurrentWeatherByCoords(lat , lon, lang, units) {
 
         const url = this.apiKeys.URL + this.apiKeys.WEATHER
         + this.apiKeys.LAT + lat + this.apiKeys.LONG + lon
-        + this.apiKeys.LANG + this.apiKeys.UNITS  + this.apiKeys.KEY;
+        + this.apiKeys.LANG + lang + this.apiKeys.UNITS + units + this.apiKeys.KEY;
 
         return this.getJsonData(url);
 
