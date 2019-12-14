@@ -19,6 +19,7 @@ export default class App {
         this.geoApi = new GeoApi();
         this.langs = new Langs();
 
+        this.coords = { lat: '', lon: '' }
         this.currentLang = 'en'
         this.currentUnits = 'metric'
         this.weatherDesc = ''
@@ -44,10 +45,12 @@ export default class App {
     }
 
     async renderDataByPos(lat, lon) {
-
+        
         const geoData = await this.geoApi.getInfoByCoords(lat, lon, this.currentLang);
         const forecastData = await this.weatherApi.getForecastByCoords(lat, lon, this.currentLang, this.currentUnits);
         const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon, this.currentLang, this.currentUnits);
+
+        [this.coords.lat, this.coords.lon] = [lat, lon];
         this.weatherDesc = weatherData.weather[0].main;
 
         await this.setBackgroundPhoto();
@@ -72,6 +75,8 @@ export default class App {
 
         const forecastData = await this.weatherApi.getForecastByCoords(lat, lon, this.currentLang, this.currentUnits);
         const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon, this.currentLang, this.currentUnits);
+
+        [this.coords.lat, this.coords.lon] = [lat, lon];
         this.weatherDesc = weatherData.weather[0].main;
 
         await this.setBackgroundPhoto();
@@ -126,24 +131,67 @@ export default class App {
             this.renderDataByCity(query);
 
         });
-
         this.view.controls.panelElements.buttonImg.link.addEventListener('click', () => {
 
             this.setBackgroundPhoto();
 
         });
-
         this.view.controls.panelElements.langSwitcher.link.addEventListener('mouseenter', () => {
 
             this.view.controls.langElements.langsList.link.style.display = 'block';
 
         });
-
         this.view.controls.panelElements.langSwitcher.link.addEventListener('mouseleave', () => {
 
             this.view.controls.langElements.langsList.link.style.display = 'none';
 
-        })
+        });
+        this.view.controls.listOflangs.ru.link.addEventListener('click', () => {
+
+            if (this.currentLang === 'ru') return
+            else {
+
+                this.currentLang = 'ru';
+                this.view.renderData(this.langs[this.currentLang]);
+                this.renderDataByPos(this.coords.lat, this.coords.lon);
+
+            }
+
+        });
+        this.view.controls.listOflangs.eng.link.addEventListener('click', () => {
+
+            if (this.currentLang === 'en') return
+            else {
+
+                this.currentLang = 'en';
+                this.view.renderData(this.langs[this.currentLang]);
+                this.renderDataByPos(this.coords.lat, this.coords.lon);
+
+            }
+
+        });
+        this.view.controls.panelElements.buttonCel.link.addEventListener('click', () => {
+
+            if (this.currentUnits === 'metric') return
+            else {
+
+                this.currentUnits = 'metric';
+                this.renderDataByPos(this.coords.lat, this.coords.lon);
+
+            }
+
+        });
+        this.view.controls.panelElements.buttonFar.link.addEventListener('click', () => {
+
+            if (this.currentUnits === 'imperial') return
+            else {
+
+                this.currentUnits = 'imperial';
+                this.renderDataByPos(this.coords.lat, this.coords.lon);
+
+            }
+
+        });
 
     }
 

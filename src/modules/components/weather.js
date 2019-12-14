@@ -12,7 +12,7 @@ export default class Weather extends Component{
         this.weahterElements = {
 
             degree: { tag: 'span', class: 'weather__degree', link: null },
-            sym: { tag: 'span', class: 'weather__cel', link: null },
+            sym: { tag: 'span', class: 'weather__sym', link: null },
             icon: { tag: 'i', class: 'owf', link: null }
 
         }

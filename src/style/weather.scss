@@ -7,14 +7,9 @@
     &__degree {
         font-size: 3rem;
     }
-    &__far {
+    &__sym {
         &::after {
-            content: '\2109'
-        }
-    }
-    &__cel {
-        &::after {
-            content: '\2103'
+            content: '\00B0'
         }
     }
 }

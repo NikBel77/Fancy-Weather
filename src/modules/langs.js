@@ -12,7 +12,7 @@ export default class Langs {
 
             controls: {
                 langElements: {
-                    currentLang: 'En',
+                    currentLang: 'Eng',
                 },
                 panelElements: {
                     buttonCel: 'C',
@@ -46,5 +46,51 @@ export default class Langs {
                 }
             },
         }
+
+        this.ruDays = {
+
+            days: ['Воскресенье','Понедельник','Вторник','Среда','Четверг','Пятница','Суббота'],
+            months: ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь']
+
+        }
+        this.ru = {
+
+            controls: {
+                langElements: {
+                    currentLang: 'Рус',
+                },
+                panelElements: {
+                    buttonCel: 'Ц',
+                    buttonFar: 'Ф'
+                },
+                searchElements: {
+                    searchBtn: 'Поиск'
+                }
+            },
+            auxiliary: {
+                feelsInfo: {
+                    text: 'По ощущениям: '
+                },
+                windInfo: {
+                    text: 'Скорость ветра: ',
+                    metric: 'м/с'
+                },
+                humInfo: {
+                    text: 'Влажность: '
+                },
+                pressureInfo: {
+                    text: 'Давление: '
+                }
+            },
+            geo: {
+                latitudeInfo: {
+                    text: 'Широта: '
+                },
+                longitudeInfo: {
+                    text: 'Долгота: '
+                }
+            },
+        }
+
     }
 }
