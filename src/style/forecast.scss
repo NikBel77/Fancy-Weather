@@ -4,10 +4,25 @@
     justify-content: space-around;
     align-items: center;
     z-index: 1;
+    font-size: 1.8rem;
+
+    &__desc {
+        font-size: 1.4rem;
+    }
 
     &__temp {
+        font-size: 2rem;
+        margin: 1rem 0;
         &::after{
+            font-size: 2.4rem;
             content: '\00B0';
+        }
+    }
+
+    &__day {
+
+        & i {
+            font-size: 2.2rem;
         }
     }
 }

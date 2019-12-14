@@ -11,8 +11,9 @@ export default class Place extends Component {
 
         this.placeElements = {
 
-            placeInfo: { tag: 'h4', class: 'place__city', link: null },
-            timeInfo: { tag: 'p', class: 'place__time', link: null }
+            placeInfo: { tag: 'p', class: 'place__city', link: null },
+            timeInfo: { tag: 'p', class: 'place__time', link: null },
+            clock: { tag: 'p', class: 'place__clock', link: null }
 
         }
         this.appendElementsToFragment(this.placeElements, this.wrapper);

@@ -9,5 +9,13 @@
     &__map {
         align-self: stretch;
         flex-basis: 24rem;
+        margin-left: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    &__coords {
+        align-self: flex-end;
+        font-size: 1.4rem;
+        margin-top: 1rem;
     }
 }

@@ -6,11 +6,16 @@
     z-index: 1;
 
     &__degree {
-        font-size: 3rem;
+        font-size: 10rem;
     }
     &__sym {
         &::after {
             content: '\00B0';
+            font-size: 14rem;
         }
+    }
+
+    & i {
+        font-size: 6rem;
     }
 }

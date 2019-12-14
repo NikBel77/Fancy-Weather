@@ -26,10 +26,10 @@ export default class Forecast extends Component{
 
             let template = {
 
-                day: { tag: 'p', link: null },
+                day: { tag: 'p', class: 'forecast_date', link: null },
                 temp: { tag: 'span', class: 'forecast__temp', link: null },
                 icon: { tag: 'i', class: 'owf', link: null },
-                desc: { tag: 'p', link: null }
+                desc: { tag: 'p', class: 'forecast__desc', link: null }
 
             }
             this.appendElementsToFragment(template, this.forecastElements[day].link);

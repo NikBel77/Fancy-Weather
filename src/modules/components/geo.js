@@ -12,8 +12,8 @@ export default class Geo extends Component{
         this.geoElements = {
 
             map: { tag: 'div', class: 'geo__map', link: null },
-            latitude: { tag: 'p', class: 'geo__lat', link: null },
-            longitude: { tag: 'p', class: 'geo__lon', link: null }
+            latitude: { tag: 'span', class: 'geo__coords', link: null },
+            longitude: { tag: 'span', class: 'geo__coords', link: null }
 
         }
         this.appendElementsToFragment(this.geoElements, this.wrapper);

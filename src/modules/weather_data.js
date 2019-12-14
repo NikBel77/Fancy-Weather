@@ -47,7 +47,8 @@ export default class WeatherData {
                     geoName: geo.results[0].formatted,
                 },
                 placeElements: {
-                    timeInfo: this.getFormatData(date, dateNames)
+                    timeInfo: this.getFormatData(date, dateNames),
+                    clock: date.toLocaleTimeString()
                 }
             }
         }
@@ -60,7 +61,7 @@ export default class WeatherData {
 
         const formatStrDate = dateNames.days[currentDate.getDay()] + ' '
         + dateNames.months[currentDate.getMonth()] + ' '
-        + currentDate.getDate() + ' ' + currentDate.toLocaleTimeString();
+        + currentDate.getDate();
         return formatStrDate
 
     }

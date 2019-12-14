@@ -24,19 +24,14 @@
 
         margin: 0 2rem;
         padding: 0 3rem;
-        border: .1rem solid $secodary-color;
+        border: .1rem solid $dark-color;
         border-radius: .4rem;
-        transition: all .1s ease-in;
 
         &:hover {
             background-color: $wite-color;
             border-bottom: none;
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
-        }
-
-        &:active{
-            background-color: $secodary-color;
         }
     }
 
@@ -47,16 +42,19 @@
         top: 100%;
         list-style: none;
         background-color: $wite-color;
-        border: .1rem solid $secodary-color;
+        border: .1rem solid $dark-color;
         border-top: none;
         box-sizing: content-box;
 
         & ul {
             padding: .6rem 0;
             cursor: pointer;
-            transition: all .1s ease-in;
 
             &:hover {
+                background-color: $secodary-color;
+            }
+
+            &:active {
                 background-color: $secodary-color;
             }
         }
@@ -107,19 +105,14 @@
 
     &__btn-img {
         border-radius: .4rem;
-
-        &::before {
-            content: '\267A';
-        }
     }
 
     & button {
         outline: none;
         height: 3rem;
         min-width: 3rem;
-        border: .1rem solid $secodary-color;
+        border: .1rem solid $dark-color;
         background-color: $main-color;
-        transition: all .1s ease-in;
         color: $dark-color;
 
         &:hover {
@@ -135,7 +128,7 @@
         outline: none;
         height: 3rem;
         width: 14rem;
-        border: .1rem solid $secodary-color;
+        border: .1rem solid $dark-color;
         font-size: 1.4rem;
     }
 }

@@ -11,7 +11,7 @@ export default class Auxiliary extends Component {
 
         this.auxElements = {
 
-            weatherDesc: { tag: 'p', link: null },
+            weatherDesc: { tag: 'p', class: 'auxiliary__desc',link: null },
             feelsLike: { tag: 'p', class: 'auxiliary__info', link: null },
             wind: { tag: 'p', class: 'auxiliary__info', link: null },
             humidity: { tag: 'p', class: 'auxiliary__info', link: null },

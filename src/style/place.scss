@@ -1,4 +1,21 @@
 .place {
     grid-area: pla;
     z-index: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 1rem 0;
+
+    &__city {
+        font-size: 1.4rem;
+    }
+
+    &__time {
+        font-size: 1.8rem;
+    }
+
+    &__clock {
+        font-size: 2rem;
+    }
 }

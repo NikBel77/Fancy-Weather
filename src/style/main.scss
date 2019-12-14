@@ -1,5 +1,5 @@
 $main-color: #8bbabb;
-$main-color-fade: rgba(139, 186, 187, 0.3);
+$main-color-fade: rgba(139, 186, 187, 0.6);
 $secodary-color: #6c7b95;
 $dark-color: #1c1929;
 $wite-color: #c7f0db;
@@ -9,6 +9,8 @@ $wite-color: #c7f0db;
     padding: 0;
     box-sizing: border-box;
     font-family: sans-serif;
+    color: $dark-color;
+    transition: all .1s ease-in;
 }
 
 :root {
