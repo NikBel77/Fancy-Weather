@@ -11,11 +11,13 @@ export default class Langs {
         this.en = {
 
             controls: {
-                panelElements: {
-                    buttonLang: 'En',
-                    buttonDeg: 'C'
+                langElements: {
+                    currentLang: 'En',
                 },
-
+                panelElements: {
+                    buttonCel: 'C',
+                    buttonFar: 'F'
+                },
                 searchElements: {
                     searchBtn: 'Search'
                 }

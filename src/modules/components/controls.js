@@ -20,11 +20,31 @@ export default class Controls extends Component {
         this.panelElements = {
 
             buttonImg: { tag: 'button', class: 'controls__btn-img', link: null },
-            buttonLang: { tag: 'button', class: 'controls__btn-lang', link: null },
-            buttonDeg: { tag: 'button', class: 'controls__btn-deg', link: null }
+            langSwitcher: { tag: 'div', class: 'controls__lang', link: null },
+            buttonCel: { tag: 'button', class: 'controls__btn-deg', link: null },
+            buttonFar: { tag: 'button', class: 'controls__btn-deg', link: null }
 
         };
         this.appendElementsToFragment(this.panelElements, this.controlElements.panel.link);
+
+        this.langElements = {
+
+            currentLang: { tag: 'span', link: null },
+            arrow: { tag: 'span', link: null },
+            langsList: { tag: 'li', class: 'controls__lang-list', link: null }
+
+        }
+        this.appendElementsToFragment(this.langElements, this.panelElements.langSwitcher.link);
+
+        this.listOflangs = {
+
+            ru: { tag: 'ul', link: null },
+            eng: { tag: 'ul', link: null }
+
+        }
+        this.appendElementsToFragment(this.listOflangs, this.langElements.langsList.link);
+        this.listOflangs.ru.link.innerText = 'ru';
+        this.listOflangs.eng.link.innerText = 'eng';
 
         this.searchElements = {
 

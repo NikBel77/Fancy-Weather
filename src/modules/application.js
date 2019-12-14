@@ -97,23 +97,6 @@ export default class App {
 
     }
 
-    setEvents() {
-
-        this.view.controls.searchElements.searchBtn.link.addEventListener('click', () => {
-
-            let query = this.view.controls.searchElements.searchInput.link.value;
-            this.renderDataByCity(query);
-
-        });
-
-        this.view.controls.panelElements.buttonImg.link.addEventListener('click', () => {
-
-            this.setBackgroundPhoto();
-
-        });
-
-    }
-
     async setBackgroundPhoto() {
 
         const query = this.weatherDesc;
@@ -132,6 +115,35 @@ export default class App {
         const app = document.querySelector(`.${this.view.appClassName}`);
         app.style.background = `url(${imageUrl}) no-repeat center`;
         app.style.backgroundSize = `cover`;
+
+    }
+
+    setEvents() {
+
+        this.view.controls.searchElements.searchBtn.link.addEventListener('click', () => {
+
+            let query = this.view.controls.searchElements.searchInput.link.value;
+            this.renderDataByCity(query);
+
+        });
+
+        this.view.controls.panelElements.buttonImg.link.addEventListener('click', () => {
+
+            this.setBackgroundPhoto();
+
+        });
+
+        this.view.controls.panelElements.langSwitcher.link.addEventListener('mouseenter', () => {
+
+            this.view.controls.langElements.langsList.link.style.display = 'block';
+
+        });
+
+        this.view.controls.panelElements.langSwitcher.link.addEventListener('mouseleave', () => {
+
+            this.view.controls.langElements.langsList.link.style.display = 'none';
+
+        })
 
     }
 

@@ -15,6 +15,36 @@
         }
     }
 
+    &__lang {
+        position: relative;
+        background-color: gray;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 3rem;
+        height: 3rem;
+        margin-right: 1rem;
+
+        border: .1rem solid black;
+        border-radius: .6rem;
+    }
+
+    &__lang-list {
+        display: none;
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        top: 100%;
+        list-style: none;
+        background-color: white;
+
+        & ul {
+            padding: .6rem 0;
+            cursor: pointer;
+        }
+    }
+
     &__search {
         display: flex;
         align-items: center;
