@@ -21,6 +21,7 @@ export default class App {
 
         this.currentLang = 'en'
         this.currentUnits = 'metric'
+        this.weatherDesc = ''
 
     }
 
@@ -47,12 +48,9 @@ export default class App {
         const geoData = await this.geoApi.getInfoByCoords(lat, lon, this.currentLang);
         const forecastData = await this.weatherApi.getForecastByCoords(lat, lon, this.currentLang, this.currentUnits);
         const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon, this.currentLang, this.currentUnits);
+        this.weatherDesc = weatherData.weather[0].main;
 
-        try {
-            await this.setBackgroundPhoto(weatherData.weather[0].description);
-        } catch {
-            console.log('catch')
-        }
+        await this.setBackgroundPhoto();
 
         this.mapApi.getMap(lat, lon);
 
@@ -74,13 +72,9 @@ export default class App {
 
         const forecastData = await this.weatherApi.getForecastByCoords(lat, lon, this.currentLang, this.currentUnits);
         const weatherData = await this.weatherApi.getCurrentWeatherByCoords(lat, lon, this.currentLang, this.currentUnits);
+        this.weatherDesc = weatherData.weather[0].main;
 
-        try {
-            await this.setBackgroundPhoto(weatherData.weather[0].description);
-        } catch {
-            console.log('catch')
-        }
-        
+        await this.setBackgroundPhoto();
         
         this.mapApi.flyTo(lat, lon)
 
@@ -120,13 +114,20 @@ export default class App {
 
     }
 
-    async setBackgroundPhoto(query) {
+    async setBackgroundPhoto() {
 
-        if (!query) {
-            query = this.view.auxiliary.auxElements.weatherDesc.link.innerText;
+        const query = this.weatherDesc;
+        let imageUrl;
+
+        try {
+
+            imageUrl = await this.photoApi.getPhotoUrl(query);
+
+        } catch(error) {
+
+            console.log(error);
+
         }
-
-        const imageUrl = await this.photoApi.getPhotoUrl(query);
 
         const app = document.querySelector(`.${this.view.appClassName}`);
         app.style.background = `url(${imageUrl}) no-repeat center`;
