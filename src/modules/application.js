@@ -19,10 +19,12 @@ export default class App {
         this.geoApi = new GeoApi();
         this.langs = new Langs();
 
-        this.coords = { lat: '', lon: '' }
-        this.currentLang = 'en'
-        this.currentUnits = 'metric'
-        this.weatherDesc = ''
+        this.coords = { lat: '', lon: '' };
+        this.currentLang = 'en';
+        this.currentUnits = 'metric';
+        this.weatherDesc = '';
+        this.clock;
+        this.date;
 
     }
 
@@ -34,6 +36,7 @@ export default class App {
         navigator.geolocation.getCurrentPosition((pos) => {
 
             this.renderDataByPos(pos.coords.latitude, pos.coords.longitude);
+            this.setClock();
 
         }, () => {
 
@@ -42,6 +45,18 @@ export default class App {
         });
 
         this.setEvents();
+
+    }
+
+    setClock() {
+
+        clearInterval(this.clock);
+        this.clock = setInterval(() => {
+
+            this.date.setSeconds(this.date.getSeconds() + 1);
+            this.view.place.placeElements.clock.link.innerText = this.date.toLocaleTimeString();
+
+        }, 1000);
 
     }
 
@@ -61,6 +76,7 @@ export default class App {
         const data = new WeatherData(weatherData, forecastData, geoData, this.langs[this.currentLang + 'Days']);
         this.view.renderData(data.data);
         this.view.forecast.renderForecast(data.forecastData);
+        this.date = data.date;
 
         return new Promise((resolve, reject) => {
 
@@ -87,6 +103,7 @@ export default class App {
         const data = new WeatherData(weatherData, forecastData, geoData, this.langs[this.currentLang + 'Days']);
         this.view.renderData(data.data);
         this.view.forecast.renderForecast(data.forecastData);
+        this.date = data.date;
 
         return new Promise((resolve, reject) => {
 
@@ -126,10 +143,23 @@ export default class App {
 
     setEvents() {
 
+        document.body.addEventListener('keypress', (e) => {
+
+            if(e.keyCode !== 13) return
+            let query = this.view.controls.searchElements.searchInput.link.value;
+            this.view.controls.searchElements.searchInput.link.value = '';
+            if(!query) return
+            this.renderDataByCity(query);
+            this.setClock();
+
+        })
         this.view.controls.searchElements.searchBtn.link.addEventListener('click', () => {
 
             let query = this.view.controls.searchElements.searchInput.link.value;
+            if(!query) return
+            this.view.controls.searchElements.searchInput.link.value = '';
             this.renderDataByCity(query);
+            this.setClock();
 
         });
         this.view.controls.panelElements.buttonImg.link.addEventListener('click', () => {

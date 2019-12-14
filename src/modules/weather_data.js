@@ -53,6 +53,7 @@ export default class WeatherData {
             }
         }
 
+        this.date = date;
         this.forecastData = this.getForecastData(forecast, dateNames.days, date);
 
     }

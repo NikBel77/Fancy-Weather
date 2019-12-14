@@ -32,7 +32,7 @@ export default class MapAPI extends API {
 
             this.map = new mapboxgl.Map({
                 container: 'map',
-                style: 'mapbox://styles/mapbox/dark-v10',
+                style: 'mapbox://styles/mapbox/light-v10',
                 center: [lon, lat],
                 zoom: 10
             });
