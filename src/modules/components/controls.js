@@ -21,8 +21,8 @@ export default class Controls extends Component {
 
             buttonImg: { tag: 'button', class: 'controls__btn-img', link: null },
             langSwitcher: { tag: 'div', class: 'controls__lang', link: null },
-            buttonCel: { tag: 'button', class: 'controls__btn-deg', link: null },
-            buttonFar: { tag: 'button', class: 'controls__btn-deg', link: null }
+            buttonCel: { tag: 'button', class: 'controls__btn-cel', link: null },
+            buttonFar: { tag: 'button', class: 'controls__btn-far', link: null }
 
         };
         this.appendElementsToFragment(this.panelElements, this.controlElements.panel.link);
@@ -35,6 +35,7 @@ export default class Controls extends Component {
 
         }
         this.appendElementsToFragment(this.langElements, this.panelElements.langSwitcher.link);
+        this.langElements.langsList.link.classList.add('no-visible');
 
         this.listOflangs = {
 

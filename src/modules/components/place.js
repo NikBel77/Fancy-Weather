@@ -21,7 +21,6 @@ export default class Place extends Component {
 
             geoName: { tag: 'span', link: null },
 
-
         }
         this.appendElementsToFragment(this.geoInfo, this.placeElements.placeInfo.link)
 

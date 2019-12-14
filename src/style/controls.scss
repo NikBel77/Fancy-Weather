@@ -1,47 +1,64 @@
 .controls {
     grid-area: cont;
-
+    z-index: 10;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: $dark-color;
+    font-size: 1.6rem;
 
     &__panel {
         display: flex;
         align-items: center;
-
-        & button {
-            margin-right: 1rem;
-            border-radius: .6rem
-        }
     }
 
     &__lang {
         position: relative;
-        background-color: gray;
+        background-color: $main-color;
         display: flex;
         justify-content: center;
         align-items: center;
 
         width: 3rem;
         height: 3rem;
-        margin-right: 1rem;
 
-        border: .1rem solid black;
-        border-radius: .6rem;
+        margin: 0 2rem;
+        padding: 0 3rem;
+        border: .1rem solid $secodary-color;
+        border-radius: .4rem;
+        transition: all .1s ease-in;
+
+        &:hover {
+            background-color: $wite-color;
+            border-bottom: none;
+            border-bottom-right-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+
+        &:active{
+            background-color: $secodary-color;
+        }
     }
 
     &__lang-list {
-        display: none;
         position: absolute;
         width: 100%;
         text-align: center;
         top: 100%;
         list-style: none;
-        background-color: white;
+        background-color: $wite-color;
+        border: .1rem solid $secodary-color;
+        border-top: none;
+        box-sizing: content-box;
 
         & ul {
             padding: .6rem 0;
             cursor: pointer;
+            transition: all .1s ease-in;
+
+            &:hover {
+                background-color: $secodary-color;
+            }
         }
     }
 
@@ -60,20 +77,65 @@
     &__btn-search {
         border-top-right-radius: .6rem;
         border-bottom-right-radius: .6rem;
+        border-left: none !important;
+        padding: 0 1rem;
+    }
+
+    &__btn-cel {
+        border-top-left-radius: .4rem;
+        border-bottom-left-radius: .4rem;
+        border-right: none !important;
+        padding: 0 1rem;
+
+        &::before {
+            content: '\2103';
+            font-family: Tahoma, sans-serif;
+        }
+    }
+
+    &__btn-far {
+        border-top-right-radius: .4rem;
+        border-bottom-right-radius: .4rem;
+        border-left: none !important;
+        padding: 0 1rem;
+
+        &::before {
+            content: '\2109';
+            font-family: Tahoma, sans-serif;
+        }
+    }
+
+    &__btn-img {
+        border-radius: .4rem;
+
+        &::before {
+            content: '\267A';
+        }
     }
 
     & button {
         outline: none;
         height: 3rem;
         min-width: 3rem;
-        padding: 0 1rem;
-        border: .1rem solid black;
+        border: .1rem solid $secodary-color;
+        background-color: $main-color;
+        transition: all .1s ease-in;
+        color: $dark-color;
+
+        &:hover {
+            background-color: $wite-color;
+        }
+
+        &:active {
+            background-color: $secodary-color;
+        }
     }
 
     & input {
         outline: none;
         height: 3rem;
         width: 14rem;
-        border: .1rem solid black;
+        border: .1rem solid $secodary-color;
+        font-size: 1.4rem;
     }
 }

@@ -5,14 +5,13 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
+    
     &__inner {
         height: 90vh;
         width: 90vw;
         min-height: 40rem;
         padding: 0 2rem;
-    
-        background-color: rgba(0, 128, 0, 0.4);
+        position: relative;
 
         display: grid;
         grid-template-rows: .5fr repeat(4, 1fr);
@@ -23,5 +22,14 @@
         "wea wea aux aux geo geo geo"
         "wea wea aux aux geo geo geo"
         "fore fore fore fore geo geo geo";
+
+        &::before {
+            content: '';
+            position: absolute;
+            background-color: $main-color-fade;
+            width: 100%;
+            height: 100%;
+            filter: blur(1px);
+        }
     }
 }

@@ -29,6 +29,7 @@ export default class App {
     init() {
 
         this.view.renderData(this.langs[this.currentLang]);
+        this.view.controls.panelElements.buttonCel.link.classList.add('active')
 
         navigator.geolocation.getCurrentPosition((pos) => {
 
@@ -138,12 +139,12 @@ export default class App {
         });
         this.view.controls.panelElements.langSwitcher.link.addEventListener('mouseenter', () => {
 
-            this.view.controls.langElements.langsList.link.style.display = 'block';
+            this.view.controls.langElements.langsList.link.classList.remove('no-visible');
 
         });
         this.view.controls.panelElements.langSwitcher.link.addEventListener('mouseleave', () => {
 
-            this.view.controls.langElements.langsList.link.style.display = 'none';
+            this.view.controls.langElements.langsList.link.classList.add('no-visible');
 
         });
         this.view.controls.listOflangs.ru.link.addEventListener('click', () => {
@@ -154,6 +155,7 @@ export default class App {
                 this.currentLang = 'ru';
                 this.view.renderData(this.langs[this.currentLang]);
                 this.renderDataByPos(this.coords.lat, this.coords.lon);
+                this.view.controls.langElements.langsList.link.classList.add('no-visible');
 
             }
 
@@ -166,6 +168,7 @@ export default class App {
                 this.currentLang = 'en';
                 this.view.renderData(this.langs[this.currentLang]);
                 this.renderDataByPos(this.coords.lat, this.coords.lon);
+                this.view.controls.langElements.langsList.link.classList.add('no-visible');
 
             }
 
@@ -175,6 +178,8 @@ export default class App {
             if (this.currentUnits === 'metric') return
             else {
 
+                this.view.controls.panelElements.buttonCel.link.classList.toggle('active');
+                this.view.controls.panelElements.buttonFar.link.classList.toggle('active');
                 this.currentUnits = 'metric';
                 this.renderDataByPos(this.coords.lat, this.coords.lon);
 
@@ -186,6 +191,8 @@ export default class App {
             if (this.currentUnits === 'imperial') return
             else {
 
+                this.view.controls.panelElements.buttonFar.link.classList.toggle('active');
+                this.view.controls.panelElements.buttonCel.link.classList.toggle('active');
                 this.currentUnits = 'imperial';
                 this.renderDataByPos(this.coords.lat, this.coords.lon);
 

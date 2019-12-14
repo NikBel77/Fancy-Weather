@@ -1,3 +1,9 @@
+$main-color: #8bbabb;
+$main-color-fade: rgba(139, 186, 187, 0.3);
+$secodary-color: #6c7b95;
+$dark-color: #1c1929;
+$wite-color: #c7f0db;
+
 * {
     margin: 0;
     padding: 0;
@@ -13,10 +19,14 @@ button, input {
     font-size: 100%;
 }
 
-$main-color: #8bbabb;
-$secodary-color: #6c7b95;
-$dark-color: #464159;
-$wite-color: #c7f0db;
+.no-visible {
+    display: none;
+}
+
+.active {
+    background-color: $dark-color !important;
+    color: $wite-color !important;
+}
 
 @import './aplication.scss';
 @import './controls.scss';

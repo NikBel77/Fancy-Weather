@@ -13,13 +13,13 @@ export default class WeatherData {
 
             weather: {
                 weahterElements: {
-                    degree: weather.main.temp,
+                    degree: Math.round(weather.main.temp),
                     icon: weather.weather[0].id + (isDay ? '-d' : '-n')
                 }
             },
             auxiliary: {
                 feelsInfo: {
-                    val: weather.main.feels_like
+                    val: Math.round(weather.main.feels_like)
                 },
                 windInfo: {
                     val: weather.wind.speed
@@ -76,7 +76,7 @@ export default class WeatherData {
 
             let dayForecast = {
 
-                temp: forecast.list[current].main.temp,
+                temp: Math.round(forecast.list[current].main.temp),
                 icon: forecast.list[current].weather[0].id,
                 desc: forecast.list[current].weather[0].description,
                 day: this.getForecastDay(daysName, currentDate)

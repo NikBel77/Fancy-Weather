@@ -14,10 +14,6 @@ export default class Langs {
                 langElements: {
                     currentLang: 'Eng',
                 },
-                panelElements: {
-                    buttonCel: 'C',
-                    buttonFar: 'F'
-                },
                 searchElements: {
                     searchBtn: 'Search'
                 }
@@ -58,10 +54,6 @@ export default class Langs {
             controls: {
                 langElements: {
                     currentLang: 'Рус',
-                },
-                panelElements: {
-                    buttonCel: 'Ц',
-                    buttonFar: 'Ф'
                 },
                 searchElements: {
                     searchBtn: 'Поиск'
