@@ -27,7 +27,7 @@ export default class App {
 
         navigator.geolocation.getCurrentPosition((pos) => {
 
-            this.renderDataByPos(pos.coords.latitude, pos.coords.longitude)
+            this.renderDataByPos(pos.coords.latitude, pos.coords.longitude);
 
         }, () => {
 
@@ -113,7 +113,7 @@ export default class App {
         if (!query) {
             query = this.view.auxiliary.auxElements.weatherDesc.link.innerText;
         }
-        console.log(query);
+
         const imageUrl = await this.photoApi.getPhotoUrl(query);
 
         const app = document.querySelector(`.${this.view.appClassName}`);

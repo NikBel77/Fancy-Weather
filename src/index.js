@@ -1,5 +1,5 @@
 import './style/main.scss'
-import './style/icons/owfont-regular.css'
+import './vendor/icons/owfont-regular.css'
 import App from './modules/application'
 
 console.time('timer');
