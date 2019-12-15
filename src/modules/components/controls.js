@@ -49,6 +49,7 @@ export default class Controls extends Component {
 
         this.searchElements = {
 
+            voiceSearchBtn: { tag: 'button', class: 'controls__voice-btn', link: null },
             searchInput: { tag: 'input', class: 'controls__inp', link: null },
             searchBtn: { tag: 'button', class: 'controls__btn-search', link: null }
 

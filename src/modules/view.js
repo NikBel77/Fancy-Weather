@@ -4,6 +4,7 @@ import Geo from './components/geo'
 import Forecast from './components/forecast'
 import Auxiliary from './components/auxiliary'
 import Place from './components/place'
+import Modal from './components/modal'
 
 export default class View {
 
@@ -19,6 +20,7 @@ export default class View {
         this.forecast = new Forecast(this.appFragment);
         this.auxiliary = new Auxiliary(this.appFragment);
         this.place = new Place(this.appFragment);
+        this.modal = new Modal();
         
         this.createAppWrapper();
     }

@@ -1,5 +1,6 @@
 $main-color: #8bbabb;
 $main-color-fade: rgba(139, 186, 187, 0.6);
+$modal-color: rgba(139, 186, 187, 1);
 $secodary-color: #6c7b95;
 $dark-color: #1c1929;
 $wite-color: #c7f0db;
@@ -22,7 +23,7 @@ button, input {
 }
 
 .no-visible {
-    display: none;
+    display: none !important;
 }
 
 .active {
@@ -37,3 +38,5 @@ button, input {
 @import './forecast.scss';
 @import './place.scss';
 @import './auxiliary.scss';
+@import './modal.scss';
+@import './animations.scss';

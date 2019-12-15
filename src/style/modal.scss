@@ -1,0 +1,25 @@
+.modal {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100vw;
+    z-index: 100;
+    transition: none;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: $modal-color;
+
+    &__icon {
+        width: 12rem;
+        height: 12rem;
+        border-radius: 50%;
+        border: 1.4rem solid $secodary-color;
+        border-top: 1.4rem solid $dark-color;
+
+        animation: spin 1.4s linear infinite;
+    }
+}

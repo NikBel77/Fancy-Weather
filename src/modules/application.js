@@ -38,6 +38,10 @@ export default class App {
             this.renderDataByPos(pos.coords.latitude, pos.coords.longitude)
             .then(() => {
                 this.setClock();
+                this.view.modal.removeModal();
+            })
+            .catch(() => {
+                this.view.modal.removeModal();
             });
 
         }, () => {
@@ -45,6 +49,10 @@ export default class App {
             this.renderByIp()
             .then(() => {
                 this.setClock();
+                this.view.modal.removeModal();
+            })
+            .catch(() => {
+                this.view.modal.removeModal();
             });
 
         });
@@ -123,11 +131,7 @@ export default class App {
 
             imageUrl = await this.photoApi.getPhotoUrl(query);
 
-        } catch(error) {
-
-            return
-
-        }
+        } catch { return };
 
         const app = document.querySelector(`.${this.view.appClassName}`);
         app.style.background = `url(${imageUrl}) no-repeat center`;
@@ -143,19 +147,31 @@ export default class App {
             let query = this.view.controls.searchElements.searchInput.link.value;
             this.view.controls.searchElements.searchInput.link.value = '';
             if(!query) return
+
+            this.view.modal.showModal();
             this.renderDataByCity(query)
-            .then(() => console.log('resolved'))
-            .catch(() => console.log('catch'));
+            .then(() => {
+                this.view.modal.removeModal();
+            })
+            .catch(() => {
+                this.view.modal.removeModal();
+            });
 
         });
         this.view.controls.searchElements.searchBtn.link.addEventListener('click', () => {
 
             let query = this.view.controls.searchElements.searchInput.link.value;
-            if(!query) return
             this.view.controls.searchElements.searchInput.link.value = '';
+            if(!query) return
+            
+            this.view.modal.showModal();
             this.renderDataByCity(query)
-            .then(() => console.log('resolved'))
-            .catch(() => console.log('catch'));
+            .then(() => {
+                this.view.modal.removeModal();
+            })
+            .catch(() => {
+                this.view.modal.removeModal();
+            });
 
         });
         this.view.controls.panelElements.buttonImg.link.addEventListener('click', () => {

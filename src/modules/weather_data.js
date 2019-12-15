@@ -55,7 +55,7 @@ export default class WeatherData {
 
         this.date = date;
         this.forecastData = this.getForecastData(forecast.list, dateNames.days, date);
-
+        
     }
 
     getFormatData(currentDate, dateNames) {
