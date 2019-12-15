@@ -35,12 +35,17 @@ export default class App {
 
         navigator.geolocation.getCurrentPosition((pos) => {
 
-            this.renderDataByPos(pos.coords.latitude, pos.coords.longitude);
-            this.setClock();
+            this.renderDataByPos(pos.coords.latitude, pos.coords.longitude)
+            .then(() => {
+                this.setClock();
+            });
 
         }, () => {
 
-            this.renderByIp();
+            this.renderByIp()
+            .then(() => {
+                this.setClock();
+            });
 
         });
 
@@ -50,7 +55,6 @@ export default class App {
 
     setClock() {
 
-        clearInterval(this.clock);
         this.clock = setInterval(() => {
 
             this.date.setSeconds(this.date.getSeconds() + 1);
@@ -78,11 +82,6 @@ export default class App {
         this.view.forecast.renderForecast(data.forecastData);
         this.date = data.date;
 
-        return new Promise((resolve, reject) => {
-
-            resolve(console.log(geoData, forecastData, weatherData))
-
-        })
     }
 
     async renderDataByCity(query) {
@@ -105,11 +104,6 @@ export default class App {
         this.view.forecast.renderForecast(data.forecastData);
         this.date = data.date;
 
-        return new Promise((resolve, reject) => {
-
-            resolve(console.log(geoData, forecastData, weatherData))
-
-        })
     }
 
     async renderByIp() {
@@ -131,7 +125,7 @@ export default class App {
 
         } catch(error) {
 
-            console.log(error);
+            return
 
         }
 
@@ -149,17 +143,19 @@ export default class App {
             let query = this.view.controls.searchElements.searchInput.link.value;
             this.view.controls.searchElements.searchInput.link.value = '';
             if(!query) return
-            this.renderDataByCity(query);
-            this.setClock();
+            this.renderDataByCity(query)
+            .then(() => console.log('resolved'))
+            .catch(() => console.log('catch'));
 
-        })
+        });
         this.view.controls.searchElements.searchBtn.link.addEventListener('click', () => {
 
             let query = this.view.controls.searchElements.searchInput.link.value;
             if(!query) return
             this.view.controls.searchElements.searchInput.link.value = '';
-            this.renderDataByCity(query);
-            this.setClock();
+            this.renderDataByCity(query)
+            .then(() => console.log('resolved'))
+            .catch(() => console.log('catch'));
 
         });
         this.view.controls.panelElements.buttonImg.link.addEventListener('click', () => {

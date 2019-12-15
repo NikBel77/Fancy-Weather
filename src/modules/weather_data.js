@@ -54,7 +54,7 @@ export default class WeatherData {
         }
 
         this.date = date;
-        this.forecastData = this.getForecastData(forecast, dateNames.days, date);
+        this.forecastData = this.getForecastData(forecast.list, dateNames.days, date);
 
     }
 
@@ -67,20 +67,18 @@ export default class WeatherData {
 
     }
 
-    getForecastData(forecast, daysName, currentDate) {
+    getForecastData(list, daysName, currentDate) {
 
-        let numberOfDays = forecast.list.length / 8;
+        let days = this.filterForecast(list, currentDate);
         let forecastData = [];
 
-        for (let i = 1; i <= numberOfDays; i += 1) {
-
-            let current = (i * (forecast.list.length / 5)) - 1;
+        for (let i = 0; i < days.length; i += 1) {
 
             let dayForecast = {
 
-                temp: Math.round(forecast.list[current].main.temp),
-                icon: forecast.list[current].weather[0].id,
-                desc: forecast.list[current].weather[0].description,
+                temp: Math.round(days[i].main.temp),
+                icon: days[i].weather[0].id,
+                desc: days[i].weather[0].description,
                 day: this.getForecastDay(daysName, currentDate)
 
             }
@@ -89,6 +87,17 @@ export default class WeatherData {
         }
         return forecastData
 
+    }
+
+    filterForecast(list, currentDate) {
+
+        return list.filter((el) => {
+
+            if(new Date(el.dt_txt).getDate() === currentDate.getDate()) return false
+            if(el.dt_txt.includes('12:00:00')) return true
+
+        });
+    
     }
 
     getForecastDay(daysName, currentDate) {

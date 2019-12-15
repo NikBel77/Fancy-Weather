@@ -26,9 +26,9 @@
         padding: 0 3rem;
         border: .1rem solid $dark-color;
         border-radius: .4rem;
+        transition: none;
 
         &:hover {
-            background-color: $wite-color;
             border-bottom: none;
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
