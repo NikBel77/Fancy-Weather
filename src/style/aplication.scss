@@ -31,5 +31,34 @@
             height: 100%;
             filter: blur(.8rem);
         }
+
+        @media (max-width: $md) {
+            height: 100vh;
+            width: 100vw;
+            grid-template-columns: repeat(2, .9fr) repeat(2, 1.2fr) repeat(3, .8fr);
+        }
+        @media (max-width: $mx) {
+            grid-template-columns: repeat(2, .9fr) repeat(2, 1.1fr) repeat(3, .7fr);
+        }
+        @media (max-width: $sm) {
+            grid-template-columns: repeat(2, .9fr) repeat(2, 1.1fr) repeat(3, .7fr);
+            grid-template-areas: 
+            "cont cont cont cont cont cont cont"
+            "pla pla pla pla fore fore fore"
+            "wea wea wea wea fore fore fore"
+            "aux aux aux aux fore fore fore"
+            "aux aux aux aux fore fore fore";
+        }
+        @media (max-width: $xs) {
+            grid-template-rows: 1.2fr 1.2fr repeat(3, .8fr);
+        }
+        @media (max-width: $xxs) {
+            grid-template-areas: 
+            "cont cont cont cont cont cont cont"
+            "pla pla pla pla pla pla pla"
+            "wea wea wea wea wea wea wea"
+            "aux aux aux aux aux aux aux"
+            "aux aux aux aux aux aux aux";
+        }
     }
 }

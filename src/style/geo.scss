@@ -17,4 +17,8 @@
         font-size: 1.4rem;
         margin-top: 1rem;
     }
+
+    @media (max-width: $sm) {
+        display: none;
+    }
 }

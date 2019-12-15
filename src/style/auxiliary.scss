@@ -6,10 +6,24 @@
     align-items: baseline;
     z-index: 1;
 
+    @media (max-width: $md) {
+        align-items: center;
+    }
+    @media (max-width: $sm) {
+        justify-content: center;
+    }
+
     &__desc {
         font-size: 2.8rem;
         margin-bottom: 3rem;
         margin-left: 1rem;
+
+        @media (max-width: $lg) {
+            font-size: 2.2rem;
+        }
+        @media (max-width: $md) {
+            font-size: 2rem;
+        }
     }
 
     &__info {

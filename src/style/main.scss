@@ -5,6 +5,13 @@ $secodary-color: #6c7b95;
 $dark-color: #1c1929;
 $wite-color: #c7f0db;
 
+$lg: 1020px;
+$md: 860px;
+$mx: 720px;
+$sm: 620px;
+$xs: 520px;
+$xxs: 320px;
+
 * {
     margin: 0;
     padding: 0;
@@ -16,6 +23,19 @@ $wite-color: #c7f0db;
 
 :root {
     font-size: 10px;
+
+    @media (min-width: $lg) {
+        font-size: 12px;
+    }
+    @media (max-width: $lg) {
+        font-size: 11px;
+    }
+    @media (max-width: $md) {
+        font-size: 10px;
+    }
+    @media (max-width: $xs) {
+        font-size: 9px;
+    }
 }
 
 button, input {
