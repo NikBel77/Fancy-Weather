@@ -143,6 +143,26 @@ export default class App {
 
     setEvents() {
 
+        this.setPhotoEvent();
+        this.setSearchEvents();
+        this.setVoiceSearchEvents();
+        this.setMetricChangeEvents();
+        this.setLangChangeEvents();
+
+    }
+
+    setPhotoEvent() {
+
+        this.view.controls.panelElements.buttonImg.link.addEventListener('click', () => {
+
+            this.setBackgroundPhoto();
+
+        });
+
+    }
+
+    setSearchEvents() {
+
         document.body.addEventListener('keypress', (e) => {
 
             if(e.keyCode !== 13) return
@@ -180,11 +200,64 @@ export default class App {
             });
 
         });
-        this.view.controls.panelElements.buttonImg.link.addEventListener('click', () => {
+        
+    }
 
-            this.setBackgroundPhoto();
+    setMetricChangeEvents() {
+
+        this.view.controls.panelElements.buttonCel.link.addEventListener('click', () => {
+
+            if (this.currentUnits === 'metric') return
+            else {
+
+                this.view.controls.panelElements.buttonCel.link.classList.toggle('active');
+                this.view.controls.panelElements.buttonFar.link.classList.toggle('active');
+                this.view.modal.showModal();
+
+                this.currentUnits = 'metric';
+                this.renderDataByPos(this.coords.lat, this.coords.lon)
+                .then(() => {
+                    this.view.controls.searchElements.searchInput.link.value = '';
+                    this.view.modal.removeModal();
+                
+                })
+                .catch(() => {
+                    this.view.controls.searchElements.searchInput.link.value = '';
+                    this.view.modal.removeModal();
+                });
+
+            }
 
         });
+        this.view.controls.panelElements.buttonFar.link.addEventListener('click', () => {
+
+            if (this.currentUnits === 'imperial') return
+            else {
+
+                this.view.controls.panelElements.buttonFar.link.classList.toggle('active');
+                this.view.controls.panelElements.buttonCel.link.classList.toggle('active');
+                this.view.modal.showModal();
+
+                this.currentUnits = 'imperial';
+                this.renderDataByPos(this.coords.lat, this.coords.lon)
+                .then(() => {
+                    this.view.controls.searchElements.searchInput.link.value = '';
+                    this.view.modal.removeModal();
+                
+                })
+                .catch(() => {
+                    this.view.controls.searchElements.searchInput.link.value = '';
+                    this.view.modal.removeModal();
+                });
+
+            }
+
+        });
+
+    }
+
+    setLangChangeEvents() {
+
         this.view.controls.panelElements.langSwitcher.link.addEventListener('mouseenter', () => {
 
             this.view.controls.langElements.langsList.link.classList.remove('no-visible');
@@ -201,8 +274,19 @@ export default class App {
             else {
 
                 this.currentLang = 'ru';
+                this.view.modal.showModal();
+                
                 this.view.renderData(this.langs[this.currentLang]);
-                this.renderDataByPos(this.coords.lat, this.coords.lon);
+                this.renderDataByPos(this.coords.lat, this.coords.lon)
+                .then(() => {
+                    this.view.controls.searchElements.searchInput.link.value = '';
+                    this.view.modal.removeModal();
+                
+                })
+                .catch(() => {
+                    this.view.controls.searchElements.searchInput.link.value = '';
+                    this.view.modal.removeModal();
+                });
                 this.view.controls.langElements.langsList.link.classList.add('no-visible');
 
             }
@@ -214,39 +298,29 @@ export default class App {
             else {
 
                 this.currentLang = 'en';
+                this.view.modal.showModal();
+
                 this.view.renderData(this.langs[this.currentLang]);
-                this.renderDataByPos(this.coords.lat, this.coords.lon);
+                this.renderDataByPos(this.coords.lat, this.coords.lon)
+                .then(() => {
+                    this.view.controls.searchElements.searchInput.link.value = '';
+                    this.view.modal.removeModal();
+                
+                })
+                .catch(() => {
+                    this.view.controls.searchElements.searchInput.link.value = '';
+                    this.view.modal.removeModal();
+                });
                 this.view.controls.langElements.langsList.link.classList.add('no-visible');
 
             }
 
         });
-        this.view.controls.panelElements.buttonCel.link.addEventListener('click', () => {
 
-            if (this.currentUnits === 'metric') return
-            else {
+    }
 
-                this.view.controls.panelElements.buttonCel.link.classList.toggle('active');
-                this.view.controls.panelElements.buttonFar.link.classList.toggle('active');
-                this.currentUnits = 'metric';
-                this.renderDataByPos(this.coords.lat, this.coords.lon);
+    setVoiceSearchEvents() {
 
-            }
-
-        });
-        this.view.controls.panelElements.buttonFar.link.addEventListener('click', () => {
-
-            if (this.currentUnits === 'imperial') return
-            else {
-
-                this.view.controls.panelElements.buttonFar.link.classList.toggle('active');
-                this.view.controls.panelElements.buttonCel.link.classList.toggle('active');
-                this.currentUnits = 'imperial';
-                this.renderDataByPos(this.coords.lat, this.coords.lon);
-
-            }
-
-        });
         this.voiceApi.rec.onresult = (e) => {
 
             let transcript = Array.from(e.results)
