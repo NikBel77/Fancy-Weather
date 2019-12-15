@@ -19,7 +19,7 @@
         justify-content: center;
         align-items: center;
 
-        width: 3rem;
+        width: 5rem;
         height: 3rem;
 
         margin: 0 2rem;
@@ -28,10 +28,20 @@
         border-radius: .4rem;
         transition: none;
 
+        & img {
+            padding: 1rem;
+            background: url(../assets/up-arrow.svg) no-repeat center;
+            transform: rotate(90deg);
+        }
+
         &:hover {
             border-bottom: none;
             border-bottom-right-radius: 0;
             border-bottom-left-radius: 0;
+
+            & img {
+                transform: rotate(180deg);
+            }
         }
     }
 
@@ -75,6 +85,7 @@
     &__voice-btn {
         border-radius: 50%;
         margin-right: 2rem;
+        background: url(../assets/voice-recording.svg) no-repeat center;
     }
 
     &__btn-search {
@@ -110,6 +121,7 @@
 
     &__btn-img {
         border-radius: .4rem;
+        background: url(../assets/refreshing.svg) center no-repeat;
     }
 
     & button {

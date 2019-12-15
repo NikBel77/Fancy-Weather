@@ -30,7 +30,7 @@ export default class Controls extends Component {
         this.langElements = {
 
             currentLang: { tag: 'span', link: null },
-            arrow: { tag: 'span', link: null },
+            arrow: { tag: 'img', link: null },
             langsList: { tag: 'li', class: 'controls__lang-list', link: null }
 
         }

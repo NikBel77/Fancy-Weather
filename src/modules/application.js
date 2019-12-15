@@ -31,9 +31,9 @@ export default class App {
     }
 
     init() {
-        console.log(this.voiceApi);
+
         this.view.renderData(this.langs[this.currentLang]);
-        this.view.controls.panelElements.buttonCel.link.classList.add('active')
+        this.view.controls.panelElements.buttonCel.link.classList.add('active');
 
         navigator.geolocation.getCurrentPosition((pos) => {
 
