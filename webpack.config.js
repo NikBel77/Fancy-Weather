@@ -121,7 +121,10 @@ const lint = {
             },
             {
                 test: /\.js$/,
-                loader: 'eslint-loader'
+                loader: 'eslint-loader',
+                options: {
+                    fix: true
+                }
             }
         ]
     },

@@ -1,9 +1,7 @@
-import Component from "./component"
+import Component from './component';
 
-export default class Weather extends Component{
-
+export default class Weather extends Component {
     constructor(fragment) {
-
         super(fragment);
 
         this.targetClass = 'weather';
@@ -13,10 +11,9 @@ export default class Weather extends Component{
 
             degree: { tag: 'span', class: 'weather__degree', link: null },
             sym: { tag: 'span', class: 'weather__sym', link: null },
-            icon: { tag: 'i', class: 'owf', link: null }
+            icon: { tag: 'i', class: 'owf', link: null },
 
-        }
+        };
         this.appendElementsToFragment(this.weahterElements, this.wrapper);
-
     }
 }

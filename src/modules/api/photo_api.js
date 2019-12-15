@@ -1,9 +1,7 @@
-import API from "./api"
+import API from './api';
 
 export default class PhotoAPI extends API {
-
     constructor() {
-
         super();
 
         this.apiKeys = {
@@ -12,23 +10,21 @@ export default class PhotoAPI extends API {
             SECRET_KEY: '58da77fa7ae16d11',
             TAGS: '&tags=',
             URL: 'https://api.flickr.com/services/rest/?method=flickr.photos.search&api_key=',
-            PARAMS: '&tag_mode=all&sort=relevance&per_page=10&content_type=1&format=json&nojsoncallback=1'
+            PARAMS: '&tag_mode=all&sort=relevance&per_page=10&content_type=1&format=json&nojsoncallback=1',
 
-        }
-
+        };
     }
 
     async getPhotoUrl(query) {
-
         if (!query) return;
 
         const url = this.apiKeys.URL + this.apiKeys.KEY + this.apiKeys.TAGS + query + this.apiKeys.PARAMS;
         const res = await this.getJsonData(url);
 
-        let { server, farm, secret, id } = res.photos.photo[Math.floor(Math.random() * res.photos.photo.length)];
-        const imageUrl = 'http://farm' + farm + '.static.flickr.com/' + server + '/' + id + '_' + secret + '_b.jpg';
-        return imageUrl
-
+        const {
+            server, farm, secret, id,
+        } = res.photos.photo[Math.floor(Math.random() * res.photos.photo.length)];
+        const imageUrl = `http://farm${farm}.static.flickr.com/${server}/${id}_${secret}_b.jpg`;
+        return imageUrl;
     }
-
 }
