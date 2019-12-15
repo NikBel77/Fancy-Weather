@@ -6,6 +6,7 @@ import PhotoAPI from './api/photo_api'
 import GeoApi from './api/geo_api'
 import Langs from './langs'
 import WeatherData from './weather_data'
+import VoiceSearchAPI from './api/voice_search_api'
 
 export default class App {
     
@@ -18,6 +19,7 @@ export default class App {
         this.photoApi = new PhotoAPI();
         this.geoApi = new GeoApi();
         this.langs = new Langs();
+        this.voiceApi = new VoiceSearchAPI();
 
         this.coords = { lat: '', lon: '' };
         this.currentLang = 'en';
@@ -29,7 +31,7 @@ export default class App {
     }
 
     init() {
-
+        console.log(this.voiceApi);
         this.view.renderData(this.langs[this.currentLang]);
         this.view.controls.panelElements.buttonCel.link.classList.add('active')
 
@@ -145,15 +147,17 @@ export default class App {
 
             if(e.keyCode !== 13) return
             let query = this.view.controls.searchElements.searchInput.link.value;
-            this.view.controls.searchElements.searchInput.link.value = '';
+
             if(!query) return
 
             this.view.modal.showModal();
             this.renderDataByCity(query)
             .then(() => {
+                this.view.controls.searchElements.searchInput.link.value = '';
                 this.view.modal.removeModal();
             })
             .catch(() => {
+                this.view.controls.searchElements.searchInput.link.value = '';
                 this.view.modal.removeModal();
             });
 
@@ -161,15 +165,17 @@ export default class App {
         this.view.controls.searchElements.searchBtn.link.addEventListener('click', () => {
 
             let query = this.view.controls.searchElements.searchInput.link.value;
-            this.view.controls.searchElements.searchInput.link.value = '';
             if(!query) return
             
             this.view.modal.showModal();
             this.renderDataByCity(query)
             .then(() => {
+                this.view.controls.searchElements.searchInput.link.value = '';
                 this.view.modal.removeModal();
+                
             })
             .catch(() => {
+                this.view.controls.searchElements.searchInput.link.value = '';
                 this.view.modal.removeModal();
             });
 
@@ -241,6 +247,37 @@ export default class App {
             }
 
         });
+        this.voiceApi.rec.onresult = (e) => {
+
+            let transcript = Array.from(e.results)
+            .map(result => result[0])
+            .map(res => res.transcript)
+            .join('');
+
+            this.view.controls.searchElements.searchInput.link.value = transcript;
+            if (e.results[0].isFinal && transcript) {
+            
+                this.view.modal.showModal();
+                this.renderDataByCity(transcript)
+                .then(() => {
+                    this.view.controls.searchElements.searchInput.link.value = '';
+                    this.view.modal.removeModal();
+                
+                })
+                .catch(() => {
+                    this.view.controls.searchElements.searchInput.link.value = '';
+                    this.view.modal.removeModal();
+                });
+
+            }
+
+        }
+        this.view.controls.searchElements.voiceSearchBtn.link.addEventListener('click', () => {
+
+            this.voiceApi.rec.lang = this.currentLang;
+            this.voiceApi.rec.start();
+
+        })
 
     }
 
