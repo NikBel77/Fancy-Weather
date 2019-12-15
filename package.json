@@ -53,5 +53,8 @@
         4
       ]
     }
+  },
+  "dependencies": {
+    "@babel/polyfill": "^7.7.0"
   }
 }

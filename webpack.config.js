@@ -20,14 +20,14 @@ const config = {
     module: {
         rules: [
             {
-                test: /\.(png|jpg|gif)$/,
+                test: /\.(png|jpg|svg|gif)$/,
                 loader: 'file-loader',
                 options: {
                     name: 'assets/[name].[ext]'
                 }
             },
             {
-                test: /\.(eot|woff|woff2|svg|ttf)([\?]?.*)$/,
+                test: /\.(eot|woff|woff2|ttf)([\?]?.*)$/,
                 loader: 'file-loader',
                 options: {
                     name: 'fonts/[name].[ext]'
