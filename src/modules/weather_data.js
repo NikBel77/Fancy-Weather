@@ -81,10 +81,12 @@ export default class WeatherData {
     }
 
     filterForecast(list, currentDate) {
-        return list.filter((el) => {
-            if (new Date(el.dt_txt).getDate() === currentDate.getDate()) return false;
-            if (el.dt_txt.includes('12:00:00')) return true;
+        const days = list.filter((el) => {
+            if (el.dt_txt.includes('12:00:00')
+                && (new Date(el.dt_txt).getDate() !== currentDate.getDate())
+            ) return true;
         });
+        return days;
     }
 
     getForecastDay(daysName, currentDate) {

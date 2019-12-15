@@ -1,9 +1,3 @@
-/*!
- *  owfont-regular 1.0.0 by Deniz Fuchidzhiev - http://websygen.com
- *  License - font: SIL OFL 1.1, css: MIT License
- */
-/* FONT PATH
- * -------------------------- */
 @font-face {
   font-family: 'owfont';
   src: url('../fonts/owfont-regular.eot?v=1.0.0');
@@ -23,70 +17,7 @@
   -moz-osx-font-smoothing: grayscale;
   transform: translate(0, 0);
 }
-/* makes the font 33% larger relative to the icon container */
-.owf-lg {
-  font-size: 1.33333333em;
-  line-height: 0.75em;
-  vertical-align: -15%;
-}
-.owf-2x {
-  font-size: 2em;
-}
-.owf-3x {
-  font-size: 3em;
-}
-.owf-4x {
-  font-size: 4em;
-}
-.owf-5x {
-  font-size: 5em;
-}
-.owf-fw {
-  width: 1.28571429em;
-  text-align: center;
-}
-.owf-ul {
-  padding-left: 0;
-  margin-left: 2.14285714em;
-  list-style-type: none;
-}
-.owf-ul > li {
-  position: relative;
-}
-.owf-li {
-  position: absolute;
-  left: -2.14285714em;
-  width: 2.14285714em;
-  top: 0.14285714em;
-  text-align: center;
-}
-.owf-li.owf-lg {
-  left: -1.85714286em;
-}
-.owf-border {
-  padding: .2em .25em .15em;
-  border: solid 0.08em #eeeeee;
-  border-radius: .1em;
-}
-.owf-pull-right {
-  float: right;
-}
-.owf-pull-left {
-  float: left;
-}
-.owf.owf-pull-left {
-  margin-right: .3em;
-}
-.owf.owf-pull-right {
-  margin-left: .3em;
-}
 
-/* owfont uses the Unicode Private Use Area (PUA) to ensure screen
-   readers do not read off random characters that represent icons */
-   
-/*   Weather Condition Codes    */
-   
-/*   Thunderstorm - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -    */
    
 /* thunderstorm with light rain */
 .owf-200:before,

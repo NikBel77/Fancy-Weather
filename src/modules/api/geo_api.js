@@ -15,7 +15,7 @@ export default class GeoApi extends API {
 
     getInfoByCoords(lat, lon, lang) {
         const url = `${this.apiKeys.URL + lat}+${lon}${this.apiKeys.KEY}${this.apiKeys.PARAMS
-        }&proximity=1` + `&language=${lang}`;
+        }&proximity=1&language=${lang}`;
         return this.getJsonData(url);
     }
 
